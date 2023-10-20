@@ -1,0 +1,143 @@
+95 RESULTS IN 13 FILES
+-------------------------------------------
+********** APEX CLASSES **********
+-------------------------------------------
+CustomAddProductController.cls
+  176,13:             OpportunityLineItem__c oliRec = new OpportunityLineItem__c();
+  176,49:             OpportunityLineItem__c oliRec = new OpportunityLineItem__c();
+  225,14:         List<OpportunityLineItem__c> lineItemToUpdate = new List<OpportunityLineItem__c>();
+  225,66:         List<OpportunityLineItem__c> lineItemToUpdate = new List<OpportunityLineItem__c>();
+  233,18:             List<OpportunityLineItem__c> olis = [SELECT Id, Order_no__c, Product2Id__r.Name FROM OpportunityLineItem__c WHERE OpportunityId__c =: oppId ORDER BY Order_no__c DESC LIMIT 2]; 
+  233,98:             List<OpportunityLineItem__c> olis = [SELECT Id, Order_no__c, Product2Id__r.Name FROM OpportunityLineItem__c WHERE OpportunityId__c =: oppId ORDER BY Order_no__c DESC LIMIT 2]; 
+  265,21:                     OpportunityLineItem__c oliDiscount = new OpportunityLineItem__c();
+  265,62:                     OpportunityLineItem__c oliDiscount = new OpportunityLineItem__c();
+  309,17:                 OpportunityLineItem__c oliShipping = new OpportunityLineItem__c();
+  309,58:                 OpportunityLineItem__c oliShipping = new OpportunityLineItem__c();
+  326,18:             List<OpportunityLineItem__c> bottleLineItems = new List<OpportunityLineItem__c>();
+  326,69:             List<OpportunityLineItem__c> bottleLineItems = new List<OpportunityLineItem__c>();
+  345,21:                 for(OpportunityLineItem__c opLn : lineItemToUpdate){
+  353,25:                         OpportunityLineItem__c freeBottleProducts = new OpportunityLineItem__c();
+  353,73:                         OpportunityLineItem__c freeBottleProducts = new OpportunityLineItem__c();
+  365,25:                         OpportunityLineItem__c freeBottleProductDiscount = new OpportunityLineItem__c();
+  365,80:                         OpportunityLineItem__c freeBottleProductDiscount = new OpportunityLineItem__c();
+  393,18:             List<OpportunityLineItem__c> olisToUpdate = new List<OpportunityLineItem__c>();
+  393,66:             List<OpportunityLineItem__c> olisToUpdate = new List<OpportunityLineItem__c>();
+  450,13:             OpportunityLineItem__c oliRec = new OpportunityLineItem__c();
+  450,49:             OpportunityLineItem__c oliRec = new OpportunityLineItem__c();
+  512,24:     public static List<OpportunityLineItem__c> getOLIProductsToDisplayQuery(Id opportunityId){
+  514,22:                 FROM OpportunityLineItem__c WHERE OpportunityId__c =: opportunityId];
+  568,50:         Schema.DescribeFieldResult fieldResult = OpportunityLineItem__c.Discount_Type__c.getDescribe();
+  582,29:         @AuraEnabled public OpportunityLineItem__c oli {get; set;}
+
+
+CustomOpportunityProductTriggerHandler.cls
+  10,34:                             List<OpportunityLineItem__c> newList, Map<Id, OpportunityLineItem__c> newMap,
+  10,75:                             List<OpportunityLineItem__c> newList, Map<Id, OpportunityLineItem__c> newMap,
+  11,34:                             List<OpportunityLineItem__c> oldList, Map<Id, OpportunityLineItem__c> oldMap){
+  11,75:                             List<OpportunityLineItem__c> oldList, Map<Id, OpportunityLineItem__c> oldMap){
+  20,79:         if(isAfter && isDelete){Set<Id> standardRecordIds = new Set<Id>();for(OpportunityLineItem__c customRecord : oldList){if(customRecord.Standard_Line_Item__c != null){standardRecordIds.add((Id)customRecord.Standard_Line_Item__c);}}if(!standardRecordIds.isEmpty()){SyncRecordsUtility.deleteRecords(standardRecordIds, true, 4);}}
+  25,21:                 for(OpportunityLineItem__c cRecord : newList){
+  61,21:                 for(OpportunityLineItem__c newOLI: newList){
+  72,21:                 for(OpportunityLineItem__c newOLI: newList){
+
+
+CustomOpportunityProductTriggerTest.cls
+  89,9:         OpportunityLineItem__c oli = new OpportunityLineItem__c();
+  89,42:         OpportunityLineItem__c oli = new OpportunityLineItem__c();
+  154,9:         OpportunityLineItem__c oli = new OpportunityLineItem__c();
+  154,42:         OpportunityLineItem__c oli = new OpportunityLineItem__c();
+  163,9:         OpportunityLineItem__c customOLI = [SELECT Id, Standard_Line_Item__c FROM OpportunityLineItem__c WHERE Id =: oli.Id LIMIT 1];
+  163,83:         OpportunityLineItem__c customOLI = [SELECT Id, Standard_Line_Item__c FROM OpportunityLineItem__c WHERE Id =: oli.Id LIMIT 1];
+
+
+CustomOpportunityTriggerHandler.cls
+  212,25:                     for(OpportunityLineItem__c oppLineItem : opp.Opportunity_Products__r){
+
+
+dlrs_OpportunityLineItemTest.cls
+  11,44:         dlrs.RollupService.testHandler(new OpportunityLineItem__c());
+
+
+EmailFilteredProductsCont.cls
+  5,24:     public static List<OpportunityLineItem__c> getFilteredProducts(){
+  6,115:         return [SELECT Id, Name, Product_Name__c, Quantity__c, UnitPrice__c, Total_Price__c, Product_Code__c FROM OpportunityLineItem__c WHERE OpportunityId__c =: opportunityId 
+  19,24:     public static List<OpportunityLineItem__c> getFilteredProducts2(){
+  20,168:         return [SELECT Id, Name, Product2Id__r.Name, Product_Name__c, Quantity__c, UnitPrice__c, Total_Price__c, Product_Code__c, Product2Id__r.Do_Not_Include__c FROM OpportunityLineItem__c WHERE OpportunityId__c =: opportunityId
+
+
+OpportunityProductTriggerHandler.cls
+  17,17:         Map<Id, OpportunityLineItem__c> sIdToCustomRecordInsertMap = new Map<Id, OpportunityLineItem__c>(); 
+  17,82:         Map<Id, OpportunityLineItem__c> sIdToCustomRecordInsertMap = new Map<Id, OpportunityLineItem__c>(); 
+  18,14:         List<OpportunityLineItem__c> customRecordsToUpdateList = new List<OpportunityLineItem__c>();
+  18,75:         List<OpportunityLineItem__c> customRecordsToUpdateList = new List<OpportunityLineItem__c>();
+  47,25:                         OpportunityLineItem__c cRecord = new OpportunityLineItem__c();
+  47,62:                         OpportunityLineItem__c cRecord = new OpportunityLineItem__c();
+  52,29:                             OpportunityLineItem__c cRecord = new OpportunityLineItem__c(Id=sRecord.Custom_Line_Item__c);
+  52,66:                             OpportunityLineItem__c cRecord = new OpportunityLineItem__c(Id=sRecord.Custom_Line_Item__c);
+
+
+PhysicianManualOrderHandler.cls
+  199,14:         List<OpportunityLineItem__c> productId = [SELECT Id FROM OpportunityLineItem__c WHERE OpportunityId__c =: oppId AND Product2Id__c =: pbEntry.Product__c];
+  199,66:         List<OpportunityLineItem__c> productId = [SELECT Id FROM OpportunityLineItem__c WHERE OpportunityId__c =: oppId AND Product2Id__c =: pbEntry.Product__c];
+  201,14:         List<OpportunityLineItem__c> olis = [SELECT Id, Order_no__c FROM OpportunityLineItem__c WHERE OpportunityId__c =: oppId ORDER BY Order_no__c DESC LIMIT 1]; 
+  201,74:         List<OpportunityLineItem__c> olis = [SELECT Id, Order_no__c FROM OpportunityLineItem__c WHERE OpportunityId__c =: oppId ORDER BY Order_no__c DESC LIMIT 1]; 
+  207,13:             OpportunityLineItem__c oliShipping = new OpportunityLineItem__c();
+  207,54:             OpportunityLineItem__c oliShipping = new OpportunityLineItem__c();
+  228,14:         List<OpportunityLineItem__c> existingShipping = [SELECT Id FROM OpportunityLineItem__c WHERE OpportunityId__c =: oppId AND Product2Id__c =: pbEntryShippingFee.Product__c];
+  228,73:         List<OpportunityLineItem__c> existingShipping = [SELECT Id FROM OpportunityLineItem__c WHERE OpportunityId__c =: oppId AND Product2Id__c =: pbEntryShippingFee.Product__c];
+  233,14:         List<OpportunityLineItem__c> productId = [SELECT Id FROM OpportunityLineItem__c WHERE OpportunityId__c =: oppId AND Product2Id__c =: pbEntryFreeShippingFee.Product__c];
+  233,66:         List<OpportunityLineItem__c> productId = [SELECT Id FROM OpportunityLineItem__c WHERE OpportunityId__c =: oppId AND Product2Id__c =: pbEntryFreeShippingFee.Product__c];
+  235,14:         List<OpportunityLineItem__c> olis = [SELECT Id, Order_no__c FROM OpportunityLineItem__c WHERE OpportunityId__c =: oppId ORDER BY Order_no__c DESC LIMIT 1]; 
+  235,74:         List<OpportunityLineItem__c> olis = [SELECT Id, Order_no__c FROM OpportunityLineItem__c WHERE OpportunityId__c =: oppId ORDER BY Order_no__c DESC LIMIT 1]; 
+  242,13:             OpportunityLineItem__c oliShippingFee = new OpportunityLineItem__c();
+  242,57:             OpportunityLineItem__c oliShippingFee = new OpportunityLineItem__c();
+  253,13:             OpportunityLineItem__c oliFreeShipping = new OpportunityLineItem__c();
+  253,58:             OpportunityLineItem__c oliFreeShipping = new OpportunityLineItem__c();
+  264,18:             List<OpportunityLineItem__c> olisToInsert = new List<OpportunityLineItem__c>{oliShippingFee, oliFreeShipping};
+  264,66:             List<OpportunityLineItem__c> olisToInsert = new List<OpportunityLineItem__c>{oliShippingFee, oliFreeShipping};
+
+
+RelateCustomLineItemsBatch.cls
+  34,13:             OpportunityLineItem__c customItem = new OpportunityLineItem__c();
+  34,53:             OpportunityLineItem__c customItem = new OpportunityLineItem__c();
+
+
+SampleFulfillmentAddProductCont.cls
+  104,13:             OpportunityLineItem__c oliRec = new OpportunityLineItem__c();
+  104,49:             OpportunityLineItem__c oliRec = new OpportunityLineItem__c();
+  128,14:         List<OpportunityLineItem__c> lineItemToBeCreatedList = new List<OpportunityLineItem__c>();
+  128,73:         List<OpportunityLineItem__c> lineItemToBeCreatedList = new List<OpportunityLineItem__c>();
+  134,13:         for(OpportunityLineItem__c existingOLIs : [SELECT Id, Order_no__c, Product2Id__r.Name FROM OpportunityLineItem__c WHERE OpportunityId__c =:opportunityId]){
+  134,100:         for(OpportunityLineItem__c existingOLIs : [SELECT Id, Order_no__c, Product2Id__r.Name FROM OpportunityLineItem__c WHERE OpportunityId__c =:opportunityId]){
+  145,13:             OpportunityLineItem__c lineItem = oliWrap.oli;
+  156,13:             OpportunityLineItem__c discountLineItem = new OpportunityLineItem__c();
+  156,59:             OpportunityLineItem__c discountLineItem = new OpportunityLineItem__c();
+  195,16:         public OpportunityLineItem__c oli { get; set; }
+
+
+SyncRecordsUtility.cls
+  192,75:     public static Boolean syncLineItemRecord(OpportunityLineItem sRecord, OpportunityLineItem__c cRecord, Map<String, String> targetSourceMap, Boolean isStandardSource, Boolean isInsert){
+  509,18:             List<OpportunityLineItem__c> customRecordToUpdateBackList = new List<OpportunityLineItem__c>();
+  509,82:             List<OpportunityLineItem__c> customRecordToUpdateBackList = new List<OpportunityLineItem__c>();
+  519,25:                         OpportunityLineItem__c updRecord = new OpportunityLineItem__c();
+  519,64:                         OpportunityLineItem__c updRecord = new OpportunityLineItem__c();
+  673,22:                 List<OpportunityLineItem__c> recordsToDeleteList = new List<OpportunityLineItem__c>();
+  673,77:                 List<OpportunityLineItem__c> recordsToDeleteList = new List<OpportunityLineItem__c>();
+  675,21:                     OpportunityLineItem__c deleteCustom = new OpportunityLineItem__c();
+  675,63:                     OpportunityLineItem__c deleteCustom = new OpportunityLineItem__c();
+
+
+
+
+
+-------------------------------------------
+********** APEX TRIGGERS **********
+-------------------------------------------
+
+CustomOpportunityProductTrigger.trigger
+  1,44: trigger CustomOpportunityProductTrigger on OpportunityLineItem__c  (before delete, after delete, after insert, after update, before update, before insert){
+
+
+dlrs_OpportunityLineItemTrigger.trigger
+  4,44: trigger dlrs_OpportunityLineItemTrigger on OpportunityLineItem__c
+  7,39:     dlrs.RollupService.triggerHandler(OpportunityLineItem__c.SObjectType);

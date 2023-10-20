@@ -1,0 +1,558 @@
+393 RESULTS IN 50 FILES SANDBOX: PARTIAL
+-------------------------------------------
+********** AURA COMPONENTS **********
+-------------------------------------------
+
+AddMultiOppsComp.cmp
+  5,54:     <aura:attribute name="physicianOrdersList" type="Physician_Manual_Order__c[]"/>
+
+
+AddMultiOppsCompHelper.js
+  44,33:                 'sobjectType': 'Physician_Manual_Order__c',
+  86,37:                     'sobjectType': 'Physician_Manual_Order__c',
+
+
+ContactCreatePhysicianManualOrderCMP.cmp
+  33,101:         <lightning:recordEditForm density="comfy" aura:id="myRecordForm" recordId="" objectApiName="Physician_Manual_Order__c" 
+
+
+
+
+
+--------------------------------------------
+********** APEX CLASSES **********
+--------------------------------------------
+
+AccountTriggerHandler.cls
+  108,14:         List<Physician_Manual_Order__c> phyManOrdListForUpdate = new List<Physician_Manual_Order__c>();
+  108,75:         List<Physician_Manual_Order__c> phyManOrdListForUpdate = new List<Physician_Manual_Order__c>();
+  109,13:         for(Physician_Manual_Order__c pmo: [SELECT Contact_Name__c, Contact_Name__r.AccountId, OwnerId FROM Physician_Manual_Order__c WHERE Contact_Name__r.AccountId IN: accOwnerIdMap.keySet()]){
+  109,109:         for(Physician_Manual_Order__c pmo: [SELECT Contact_Name__c, Contact_Name__r.AccountId, OwnerId FROM Physician_Manual_Order__c WHERE Contact_Name__r.AccountId IN: accOwnerIdMap.keySet()]){
+
+
+AccountTriggerHandlerTest.cls
+  91,9:         Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+  91,48:         Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+
+
+AddMultiOpps.cls
+  3,24:     public static List<Physician_Manual_Order__c> getPhysicianManualOrderRecords(Id accId){
+  4,51:         Id quotaRecordTypeId = Schema.SObjectType.Physician_Manual_Order__c.getRecordTypeInfosByDeveloperName().get('Quota').getRecordTypeId();
+  5,131:         return [SELECT Id, AccountId__c, Contract__c, Year__c, Start__c, End__c, Quota_Amount__c, End_Contract__c, Report__c FROM Physician_Manual_Order__c WHERE RecordTypeId =: quotaRecordTypeId AND AccountId__c =: accId ORDER BY Start__c ASC];
+  10,51:         Id quotaRecordTypeId = Schema.SObjectType.Physician_Manual_Order__c.getRecordTypeInfosByDeveloperName().get('Quota').getRecordTypeId();
+  11,14:         List<Physician_Manual_Order__c> manualOrders = [SELECT Id, Start__c, End__c FROM Physician_Manual_Order__c WHERE RecordTypeId =: quotaRecordTypeId AND AccountId__c =: accId ORDER BY Start__c ASC];
+  11,90:         List<Physician_Manual_Order__c> manualOrders = [SELECT Id, Start__c, End__c FROM Physician_Manual_Order__c WHERE RecordTypeId =: quotaRecordTypeId AND AccountId__c =: accId ORDER BY Start__c ASC];
+  21,9:         Physician_Manual_Order__c physicianManOrdToDelete = new Physician_Manual_Order__c(Id=physicianManOrdId);
+  21,65:         Physician_Manual_Order__c physicianManOrdToDelete = new Physician_Manual_Order__c(Id=physicianManOrdId);
+  26,63:     public static String savePhysicianManualOrderRecords(List<Physician_Manual_Order__c> manualOrdersToUpsert){
+  27,14:         List<Physician_Manual_Order__c> manualOrdersToInsert = new List<Physician_Manual_Order__c>();
+  27,73:         List<Physician_Manual_Order__c> manualOrdersToInsert = new List<Physician_Manual_Order__c>();
+  28,14:         List<Physician_Manual_Order__c> manualOrdersToUpdate = new List<Physician_Manual_Order__c>();
+  28,73:         List<Physician_Manual_Order__c> manualOrdersToUpdate = new List<Physician_Manual_Order__c>();
+  30,51:         Id quotaRecordTypeId = Schema.SObjectType.Physician_Manual_Order__c.getRecordTypeInfosByDeveloperName().get('Quota').getRecordTypeId();
+  35,21:         Map<String, Physician_Manual_Order__c> yearContOrderMap = new Map<String, Physician_Manual_Order__c>();
+  35,83:         Map<String, Physician_Manual_Order__c> yearContOrderMap = new Map<String, Physician_Manual_Order__c>();
+  61,13:         for(Physician_Manual_Order__c manualOrd: manualOrdersToUpsert){
+
+
+AddMultiOppsTest.cls
+  8,14:         List<Physician_Manual_Order__c> phyManOrder = new List<Physician_Manual_Order__c>();
+  8,64:         List<Physician_Manual_Order__c> phyManOrder = new List<Physician_Manual_Order__c>();
+  9,13:             Physician_Manual_Order__c ord = new Physician_Manual_Order__c();
+  9,49:             Physician_Manual_Order__c ord = new Physician_Manual_Order__c();
+  33,14:         List<Physician_Manual_Order__c> phyManOrder = new List<Physician_Manual_Order__c>();
+  33,64:         List<Physician_Manual_Order__c> phyManOrder = new List<Physician_Manual_Order__c>();
+  34,13:             Physician_Manual_Order__c ord = new Physician_Manual_Order__c();
+  34,49:             Physician_Manual_Order__c ord = new Physician_Manual_Order__c();
+
+
+ConfirmOrderPageController.cls
+  9,13:             Physician_Manual_Order__c custOpp = new Physician_Manual_Order__c(Id = recordId);
+  9,53:             Physician_Manual_Order__c custOpp = new Physician_Manual_Order__c(Id = recordId);
+
+
+ConfirmOrderPageControllerTest.cls
+  14,9:         Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+  14,48:         Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+
+
+ContactCreatePhysicianManualOrderCont.cls
+  4,57:         Id fulfillmentRecordTypeId = Schema.SObjectType.Physician_Manual_Order__c.getRecordTypeInfosByDeveloperName().get('Sample_Fulfillment').getRecordTypeId();
+
+
+ContactTriggerHandler.cls
+  154,14:         List<Physician_Manual_Order__c> phyManOrdListForUpdate = new List<Physician_Manual_Order__c>();
+  154,75:         List<Physician_Manual_Order__c> phyManOrdListForUpdate = new List<Physician_Manual_Order__c>();
+  155,13:         for(Physician_Manual_Order__c pmo: [SELECT Contact_Name__c, OwnerId FROM Physician_Manual_Order__c WHERE Contact_Name__c IN: contactIdPostalCodeMap.keySet()]){
+  155,82:         for(Physician_Manual_Order__c pmo: [SELECT Contact_Name__c, OwnerId FROM Physician_Manual_Order__c WHERE Contact_Name__c IN: contactIdPostalCodeMap.keySet()]){
+
+
+ContactTriggerHandlerTest.cls
+  192,9:         Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+  192,48:         Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+
+
+COpportunityProductsPDFextensionTest.cls
+  4,9:         Physician_Manual_Order__c pmo = new Physician_Manual_Order__c(
+  4,45:         Physician_Manual_Order__c pmo = new Physician_Manual_Order__c(
+
+
+CustomAddProductController.cls
+  7,59:         Id pricebookId = [SELECT Id, PriceBook2Id__c FROM Physician_Manual_Order__c WHERE Id =: opportunityId].PriceBook2Id__c;
+  46,59:         Id pricebookId = [SELECT Id, PriceBook2Id__c FROM Physician_Manual_Order__c WHERE Id =: opportunityId].PriceBook2Id__c;
+  66,59:         Id pricebookId = [SELECT Id, PriceBook2Id__c FROM Physician_Manual_Order__c WHERE Id =: opportunityId].PriceBook2Id__c;
+  94,9:         Physician_Manual_Order__c opp = [SELECT Id, PriceBook2Id__c, PriceBook2Id__r.Name FROM Physician_Manual_Order__c WHERE Id =: opportunityId];
+  94,96:         Physician_Manual_Order__c opp = [SELECT Id, PriceBook2Id__c, PriceBook2Id__r.Name FROM Physician_Manual_Order__c WHERE Id =: opportunityId];
+  108,59:         Id pricebookId = [SELECT Id, PriceBook2Id__c FROM Physician_Manual_Order__c WHERE Id =: opportunityId].PriceBook2Id__c;
+  155,9:         Physician_Manual_Order__c parentPhysicianOrder = [SELECT Id,Promotion__c,AccountId__c,AccountId__r.Account_Status__c FROM Physician_Manual_Order__c WHERE Id=:opportunityId];
+  155,131:         Physician_Manual_Order__c parentPhysicianOrder = [SELECT Id,Promotion__c,AccountId__c,AccountId__r.Account_Status__c FROM Physician_Manual_Order__c WHERE Id=:opportunityId];
+  290,13:             Physician_Manual_Order__c oppRecord = [SELECT Id,Promotion__c, Pricebook2Id__c FROM Physician_Manual_Order__c WHERE Id =: oppId];
+  290,97:             Physician_Manual_Order__c oppRecord = [SELECT Id,Promotion__c, Pricebook2Id__c FROM Physician_Manual_Order__c WHERE Id =: oppId];
+  422,59:         Id pricebookId = [SELECT Id, PriceBook2Id__c FROM Physician_Manual_Order__c WHERE Id =: opportunityId].PriceBook2Id__c;
+  486,9:         Physician_Manual_Order__c opp = [SELECT Id, PriceBook2Id__c, PriceBook2Id__r.Name FROM Physician_Manual_Order__c WHERE Id =: opportunityId];
+  486,96:         Physician_Manual_Order__c opp = [SELECT Id, PriceBook2Id__c, PriceBook2Id__r.Name FROM Physician_Manual_Order__c WHERE Id =: opportunityId];
+  504,9:         Physician_Manual_Order__c opp = [SELECT Id, PriceBook2Id__c, PriceBook2Id__r.Name FROM Physician_Manual_Order__c WHERE Id =: opportunityId];
+  504,96:         Physician_Manual_Order__c opp = [SELECT Id, PriceBook2Id__c, PriceBook2Id__r.Name FROM Physician_Manual_Order__c WHERE Id =: opportunityId];
+  540,17:                 Physician_Manual_Order__c opp = [SELECT Id, PriceBook2Id__c, PriceBook2Id__r.Name FROM Physician_Manual_Order__c WHERE Id =: opportunityId];
+  540,104:                 Physician_Manual_Order__c opp = [SELECT Id, PriceBook2Id__c, PriceBook2Id__r.Name FROM Physician_Manual_Order__c WHERE Id =: opportunityId];
+  541,17:                 Physician_Manual_Order__c oppToUpdate = new Physician_Manual_Order__c(Id = opportunityId);
+  541,61:                 Physician_Manual_Order__c oppToUpdate = new Physician_Manual_Order__c(Id = opportunityId);
+
+
+CustomAddProductControllerTest.cls
+  82,9:         Physician_Manual_Order__c opp = new Physician_Manual_Order__c();
+  82,45:         Physician_Manual_Order__c opp = new Physician_Manual_Order__c();
+  91,36:         Id oppId = [SELECT Id FROM Physician_Manual_Order__c LIMIT 1].Id;
+  101,36:         Id oppId = [SELECT Id FROM Physician_Manual_Order__c LIMIT 1].Id;
+  108,36:         Id oppId = [SELECT Id FROM Physician_Manual_Order__c LIMIT 1].Id;
+  120,36:         Id oppId = [SELECT Id FROM Physician_Manual_Order__c LIMIT 1].Id;
+
+
+CustomConvertLeadController.cls
+  176,57:                    Id recordTypeId = Schema.SObjectType.Physician_Manual_Order__c.getRecordTypeInfosByDeveloperName().get('Physician_Manual_Order').getRecordTypeId();
+  177,20:                    Physician_Manual_Order__c phyToInsert = new Physician_Manual_Order__c();
+  177,64:                    Physician_Manual_Order__c phyToInsert = new Physician_Manual_Order__c();
+
+CustomOpportunityProductsPDFextension.cls
+  2,12:     public Physician_Manual_Order__c pmoRecord {get; set;}
+  4,22:         pmoRecord = (Physician_Manual_Order__c) std.getRecord();
+  8,34:                             FROM Physician_Manual_Order__c WHERE Id =: pmoRecord.Id];
+
+CustomOpportunityProductTriggerTest.cls
+  43,9:         Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+  43,48:         Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+  67,9:         Physician_Manual_Order__c customOpp = [SELECT Id, Standard_Opportunity__c FROM Physician_Manual_Order__c WHERE Id =: newOpp.Id];
+  67,88:         Physician_Manual_Order__c customOpp = [SELECT Id, Standard_Opportunity__c FROM Physician_Manual_Order__c WHERE Id =: newOpp.Id];
+  108,9:         Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+  108,48:         Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+  132,9:         Physician_Manual_Order__c customOpp = [SELECT Id, Standard_Opportunity__c FROM Physician_Manual_Order__c WHERE Id =: newOpp.Id];
+  132,88:         Physician_Manual_Order__c customOpp = [SELECT Id, Standard_Opportunity__c FROM Physician_Manual_Order__c WHERE Id =: newOpp.Id];
+
+
+CustomOpportunityTriggerHandler.cls
+  14,34:                             List<Physician_Manual_Order__c> newList, Map<Id, Physician_Manual_Order__c> newMap,
+  14,78:                             List<Physician_Manual_Order__c> newList, Map<Id, Physician_Manual_Order__c> newMap,
+  15,34:                             List<Physician_Manual_Order__c> oldList, Map<Id, Physician_Manual_Order__c> oldMap){
+  15,78:                             List<Physician_Manual_Order__c> oldList, Map<Id, Physician_Manual_Order__c> oldMap){
+  33,49:         Id intPhyrecTypeId = Schema.SObjectType.Physician_Manual_Order__c.getRecordTypeInfosByDeveloperName().get('International_Physician_Manual_Order').getRecordTypeId();
+  41,17:             for(Physician_Manual_Order__c cRecord : newList){
+  71,17:             for(Physician_Manual_Order__c customRecord : oldList){
+  86,17:             for(Physician_Manual_Order__c cRecord : newList){
+  101,17:             for(Physician_Manual_Order__c cRecord : newList){
+  106,53:             Id phyManOrdTypeId = Schema.SObjectType.Physician_Manual_Order__c.getRecordTypeInfosByDeveloperName().get('Physician_Manual_Order').getRecordTypeId();
+  107,49:             Id quotaTypeId = Schema.SObjectType.Physician_Manual_Order__c.getRecordTypeInfosByDeveloperName().get('Quota').getRecordTypeId();
+  110,26:             Map<Id, List<Physician_Manual_Order__c>> accPhyManOrdMap = new Map<Id, List<Physician_Manual_Order__c>>();
+  110,89:             Map<Id, List<Physician_Manual_Order__c>> accPhyManOrdMap = new Map<Id, List<Physician_Manual_Order__c>>();
+  112,21:                 for(Physician_Manual_Order__c phyManOrd: [SELECT Id, AccountId__c, Amount__c, StageName__c, Close_Date__c, Start__c, End__c, Amount_Sold__c, RecordTypeId FROM Physician_Manual_Order__c WHERE AccountId__c IN: accountIdSet]){
+  112,176:                 for(Physician_Manual_Order__c phyManOrd: [SELECT Id, AccountId__c, Amount__c, StageName__c, Close_Date__c, Start__c, End__c, Amount_Sold__c, RecordTypeId FROM Physician_Manual_Order__c WHERE AccountId__c IN: accountIdSet]){
+  126,82:                             accPhyManOrdMap.put(phyManOrd.AccountId__c, new List<Physician_Manual_Order__c>{phyManOrd});
+  133,22:                 List<Physician_Manual_Order__c> toUpdateList = new List<Physician_Manual_Order__c>();
+  133,73:                 List<Physician_Manual_Order__c> toUpdateList = new List<Physician_Manual_Order__c>();
+  136,29:                         for(Physician_Manual_Order__c toUpdate: accPhyManOrdMap.get(accKey)){
+  159,25:                 Map<Id, Physician_Manual_Order__c> phsyManOrdersMap = new Map<Id, Physician_Manual_Order__c>([SELECT Id, PriceBook2Id__c, PriceBook2Id__r.Standard_Price_Book__c FROM Physician_Manual_Order__c WHERE Id IN :newList]);
+  159,83:                 Map<Id, Physician_Manual_Order__c> phsyManOrdersMap = new Map<Id, Physician_Manual_Order__c>([SELECT Id, PriceBook2Id__c, PriceBook2Id__r.Standard_Price_Book__c FROM Physician_Manual_Order__c WHERE Id IN :newList]);
+  159,183:                 Map<Id, Physician_Manual_Order__c> phsyManOrdersMap = new Map<Id, Physician_Manual_Order__c>([SELECT Id, PriceBook2Id__c, PriceBook2Id__r.Standard_Price_Book__c FROM Physician_Manual_Order__c WHERE Id IN :newList]);
+  161,21:                 for(Physician_Manual_Order__c cRecord : newList){
+  164,157:                         SyncRecordsUtility.syncOpportunityRecord(sRecord, cRecord, standardTargetCustomSourceMap, opp, customOpp, false, true, (new Map<Id, Physician_Manual_Order__c>()));
+  167,25:                         Physician_Manual_Order__c oldCustomRecord = oldMap.get(cRecord.Id);
+  205,61:     public static Map<Id, Integer> getOppWithLineItems(List<Physician_Manual_Order__c> newList){
+  207,14:         List<Physician_Manual_Order__c> oppWithLineItemsList = [SELECT Id, (SELECT Id FROM Opportunity_Products__r) FROM Physician_Manual_Order__c WHERE Id IN: newList];
+  207,122:         List<Physician_Manual_Order__c> oppWithLineItemsList = [SELECT Id, (SELECT Id FROM Opportunity_Products__r) FROM Physician_Manual_Order__c WHERE Id IN: newList];
+  209,17:             for(Physician_Manual_Order__c opp : oppWithLineItemsList){
+  227,49:         Id phyManOrdTypeId = Schema.SObjectType.Physician_Manual_Order__c.getRecordTypeInfosByDeveloperName().get('Physician_Manual_Order').getRecordTypeId();
+  228,45:         Id quotaTypeId = Schema.SObjectType.Physician_Manual_Order__c.getRecordTypeInfosByDeveloperName().get('Quota').getRecordTypeId();
+  231,22:         Map<Id, List<Physician_Manual_Order__c>> accPhyManOrdMap = new Map<Id, List<Physician_Manual_Order__c>>();
+  231,85:         Map<Id, List<Physician_Manual_Order__c>> accPhyManOrdMap = new Map<Id, List<Physician_Manual_Order__c>>();
+  233,17:             for(Physician_Manual_Order__c phyManOrd: [SELECT Id, AccountId__c, Amount__c, StageName__c, Close_Date__c, Start__c, End__c, Amount_Sold__c, RecordTypeId FROM Physician_Manual_Order__c WHERE AccountId__c IN: accountIdSet]){
+  233,172:             for(Physician_Manual_Order__c phyManOrd: [SELECT Id, AccountId__c, Amount__c, StageName__c, Close_Date__c, Start__c, End__c, Amount_Sold__c, RecordTypeId FROM Physician_Manual_Order__c WHERE AccountId__c IN: accountIdSet]){
+  247,78:                         accPhyManOrdMap.put(phyManOrd.AccountId__c, new List<Physician_Manual_Order__c>{phyManOrd});
+  254,18:             List<Physician_Manual_Order__c> toUpdateList = new List<Physician_Manual_Order__c>();
+  254,69:             List<Physician_Manual_Order__c> toUpdateList = new List<Physician_Manual_Order__c>();
+  257,25:                     for(Physician_Manual_Order__c toUpdate: accPhyManOrdMap.get(accKey)){
+
+
+CustomOpportunityTriggerHandlerTest.cls
+  67,9:         Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+  67,48:         Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+  90,9:         Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+  90,48:         Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+  101,9:         Physician_Manual_Order__c opp = [SELECT Id, Standard_Opportunity__c FROM Physician_Manual_Order__c WHERE Id=:newOpp.Id];
+  101,82:         Physician_Manual_Order__c opp = [SELECT Id, Standard_Opportunity__c FROM Physician_Manual_Order__c WHERE Id=:newOpp.Id];
+  121,9:         Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+  121,48:         Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+  132,9:         Physician_Manual_Order__c opp = [SELECT Id, Standard_Opportunity__c FROM Physician_Manual_Order__c WHERE Id=:newOpp.Id];
+  132,82:         Physician_Manual_Order__c opp = [SELECT Id, Standard_Opportunity__c FROM Physician_Manual_Order__c WHERE Id=:newOpp.Id];
+
+
+CustomPicklistPathCont.cls
+  4,19:     public static Physician_Manual_Order__c loadData(Id recordId){
+  8,13:             Physician_Manual_Order__c phyManOrd = [SELECT Id, Bar2__c, International_Stage_2__c, Certificate_of_Origin__c, Certificate_of_Analysis__c,
+  11,57:                                                    FROM Physician_Manual_Order__c
+  24,13:             Physician_Manual_Order__c phyManOrd = new Physician_Manual_Order__c(Id=recordId);
+  24,55:             Physician_Manual_Order__c phyManOrd = new Physician_Manual_Order__c(Id=recordId);
+  37,13:             Physician_Manual_Order__c phyManOrd = new Physician_Manual_Order__c(Id=recordId);
+  37,55:             Physician_Manual_Order__c phyManOrd = new Physician_Manual_Order__c(Id=recordId);
+  52,13:             Physician_Manual_Order__c phyManOrd = new Physician_Manual_Order__c(Id=recordId);
+  52,55:             Physician_Manual_Order__c phyManOrd = new Physician_Manual_Order__c(Id=recordId);
+  91,13:             Physician_Manual_Order__c phyManOrd = new Physician_Manual_Order__c(Id=recordId);
+  91,55:             Physician_Manual_Order__c phyManOrd = new Physician_Manual_Order__c(Id=recordId);
+
+
+CustomPicklistPathCont2.cls
+  4,19:     public static Physician_Manual_Order__c loadData(Id recordId){
+  8,13:             Physician_Manual_Order__c phyManOrd = [SELECT Id, Bar2__c, International_Order_Stage__c, International_Stage_2__c, New_Biz_Lead_Stage__c, Certificate_of_Origin__c, Certificate_of_Analysis__c,
+  11,57:                                                    FROM Physician_Manual_Order__c
+  24,13:             Physician_Manual_Order__c phyManOrd = new Physician_Manual_Order__c(Id=recordId);
+  24,55:             Physician_Manual_Order__c phyManOrd = new Physician_Manual_Order__c(Id=recordId);
+  38,13:             Physician_Manual_Order__c phyManOrd = new Physician_Manual_Order__c(Id=recordId);
+  38,55:             Physician_Manual_Order__c phyManOrd = new Physician_Manual_Order__c(Id=recordId);
+  52,13:             Physician_Manual_Order__c phyManOrd = new Physician_Manual_Order__c(Id=recordId);
+  52,55:             Physician_Manual_Order__c phyManOrd = new Physician_Manual_Order__c(Id=recordId);
+
+CustomPicklistPathContTest.cls
+  8,14:         List<Physician_Manual_Order__c> phyManOrder = new List<Physician_Manual_Order__c>();
+  8,64:         List<Physician_Manual_Order__c> phyManOrder = new List<Physician_Manual_Order__c>();
+  9,13:             Physician_Manual_Order__c ord = new Physician_Manual_Order__c();
+  9,49:             Physician_Manual_Order__c ord = new Physician_Manual_Order__c();
+  41,14:         List<Physician_Manual_Order__c> phyManOrder = new List<Physician_Manual_Order__c>();
+  41,64:         List<Physician_Manual_Order__c> phyManOrder = new List<Physician_Manual_Order__c>();
+  42,13:             Physician_Manual_Order__c ord = new Physician_Manual_Order__c();
+  42,49:             Physician_Manual_Order__c ord = new Physician_Manual_Order__c();
+  90,14:         List<Physician_Manual_Order__c> phyManOrder = new List<Physician_Manual_Order__c>();
+  90,64:         List<Physician_Manual_Order__c> phyManOrder = new List<Physician_Manual_Order__c>();
+  91,13:             Physician_Manual_Order__c ord = new Physician_Manual_Order__c();
+  91,49:             Physician_Manual_Order__c ord = new Physician_Manual_Order__c();
+  128,14:         List<Physician_Manual_Order__c> phyManOrder = new List<Physician_Manual_Order__c>();
+  128,64:         List<Physician_Manual_Order__c> phyManOrder = new List<Physician_Manual_Order__c>();
+  129,13:             Physician_Manual_Order__c ord = new Physician_Manual_Order__c();
+  129,49:             Physician_Manual_Order__c ord = new Physician_Manual_Order__c();
+
+
+CustomPicklistPathContTest2.cls
+  8,14:         List<Physician_Manual_Order__c> phyManOrder = new List<Physician_Manual_Order__c>();
+  8,64:         List<Physician_Manual_Order__c> phyManOrder = new List<Physician_Manual_Order__c>();
+  9,13:             Physician_Manual_Order__c ord = new Physician_Manual_Order__c();
+  9,49:             Physician_Manual_Order__c ord = new Physician_Manual_Order__c();
+  41,14:         List<Physician_Manual_Order__c> phyManOrder = new List<Physician_Manual_Order__c>();
+  41,64:         List<Physician_Manual_Order__c> phyManOrder = new List<Physician_Manual_Order__c>();
+  42,13:             Physician_Manual_Order__c ord = new Physician_Manual_Order__c();
+  42,49:             Physician_Manual_Order__c ord = new Physician_Manual_Order__c();
+  82,14:         List<Physician_Manual_Order__c> phyManOrder = new List<Physician_Manual_Order__c>();
+  82,64:         List<Physician_Manual_Order__c> phyManOrder = new List<Physician_Manual_Order__c>();
+  83,13:             Physician_Manual_Order__c ord = new Physician_Manual_Order__c();
+  83,49:             Physician_Manual_Order__c ord = new Physician_Manual_Order__c();
+  128,14:         List<Physician_Manual_Order__c> phyManOrder = new List<Physician_Manual_Order__c>();
+  128,64:         List<Physician_Manual_Order__c> phyManOrder = new List<Physician_Manual_Order__c>();
+  129,13:             Physician_Manual_Order__c ord = new Physician_Manual_Order__c();
+  129,49:             Physician_Manual_Order__c ord = new Physician_Manual_Order__c();
+  172,14:         List<Physician_Manual_Order__c> phyManOrder = new List<Physician_Manual_Order__c>();
+  172,64:         List<Physician_Manual_Order__c> phyManOrder = new List<Physician_Manual_Order__c>();
+  173,13:             Physician_Manual_Order__c ord = new Physician_Manual_Order__c();
+  173,49:             Physician_Manual_Order__c ord = new Physician_Manual_Order__c();
+
+
+dlrs_Physician_Manual_OrderTest.cls
+  11,44:         dlrs.RollupService.testHandler(new Physician_Manual_Order__c());
+
+
+EmailFilteredProductsCont.cls
+  13,64:             oppNumber = [SELECT Id, Opportunity_Number__c FROM Physician_Manual_Order__c WHERE Id =: opportunityId].Opportunity_Number__c;
+
+
+EmailFilteredProductsContTest.cls
+  82,9:         Physician_Manual_Order__c opp = new Physician_Manual_Order__c();
+  82,45:         Physician_Manual_Order__c opp = new Physician_Manual_Order__c();
+  91,36:         Id oppId = [SELECT Id FROM Physician_Manual_Order__c LIMIT 1].Id;
+
+OpportunityTriggerHandler.cls
+  120,17:         Map<Id, Physician_Manual_Order__c> sIdToCustomRecordInsertMap = new Map<Id, Physician_Manual_Order__c>(); 
+  120,85:         Map<Id, Physician_Manual_Order__c> sIdToCustomRecordInsertMap = new Map<Id, Physician_Manual_Order__c>(); 
+  121,14:         List<Physician_Manual_Order__c> customRecordsToUpdateList = new List<Physician_Manual_Order__c>();
+  121,78:         List<Physician_Manual_Order__c> customRecordsToUpdateList = new List<Physician_Manual_Order__c>();
+  163,25:                 Map<Id, Physician_Manual_Order__c> phsyManOrdersMap = new Map<Id, Physician_Manual_Order__c>([SELECT Id, PriceBook2Id__c, PriceBook2Id__r.Standard_Price_Book__c FROM Physician_Manual_Order__c WHERE Id IN :physManOrderIds]);
+  163,83:                 Map<Id, Physician_Manual_Order__c> phsyManOrdersMap = new Map<Id, Physician_Manual_Order__c>([SELECT Id, PriceBook2Id__c, PriceBook2Id__r.Standard_Price_Book__c FROM Physician_Manual_Order__c WHERE Id IN :physManOrderIds]);
+  163,183:                 Map<Id, Physician_Manual_Order__c> phsyManOrdersMap = new Map<Id, Physician_Manual_Order__c>([SELECT Id, PriceBook2Id__c, PriceBook2Id__r.Standard_Price_Book__c FROM Physician_Manual_Order__c WHERE Id IN :physManOrderIds]);
+  168,25:                         Physician_Manual_Order__c cRecord = new Physician_Manual_Order__c();
+  168,65:                         Physician_Manual_Order__c cRecord = new Physician_Manual_Order__c();
+  169,156:                         SyncRecordsUtility.syncOpportunityRecord(sRecord, cRecord, customTargetStandardSourceMap, opp, customOpp, true, true, (new Map<Id, Physician_Manual_Order__c>()));
+  174,29:                             Physician_Manual_Order__c cRecord = new Physician_Manual_Order__c(Id=sRecord.Custom_Opportunity__c);
+  174,69:                             Physician_Manual_Order__c cRecord = new Physician_Manual_Order__c(Id=sRecord.Custom_Opportunity__c);
+
+PhysicianManualOrderHandler.cls
+  7,43:     public static void onAfterUpdate(List<Physician_Manual_Order__c> phyOrdNew, Map<Id, Physician_Manual_Order__c> oldPhyOrd) {
+  7,89:     public static void onAfterUpdate(List<Physician_Manual_Order__c> phyOrdNew, Map<Id, Physician_Manual_Order__c> oldPhyOrd) {
+  17,43:     public static void onAfterInsert(List<Physician_Manual_Order__c> phyOrdNew){
+  21,65:     public static void resetValidationPassFieldAfterInsert(List<Physician_Manual_Order__c> phyOrdNew){
+  24,13:         for(Physician_Manual_Order__c pmo: [SELECT Id, ValidationPass__c FROM Physician_Manual_Order__c WHERE Id IN: phyOrdNew]){
+  24,79:         for(Physician_Manual_Order__c pmo: [SELECT Id, ValidationPass__c FROM Physician_Manual_Order__c WHERE Id IN: phyOrdNew]){
+  37,14:         List<Physician_Manual_Order__c> pmoToUpdateList = new List<Physician_Manual_Order__c>();
+  37,68:         List<Physician_Manual_Order__c> pmoToUpdateList = new List<Physician_Manual_Order__c>();
+  38,13:         for(Physician_Manual_Order__c pmoToUpdate: [SELECT Id, ValidationPass__c FROM Physician_Manual_Order__c WHERE Id IN: pmoIdSet]){
+  38,87:         for(Physician_Manual_Order__c pmoToUpdate: [SELECT Id, ValidationPass__c FROM Physician_Manual_Order__c WHERE Id IN: pmoIdSet]){
+  48,71:     public static void handleDiscountConfirmationEmailToCustomer(List<Physician_Manual_Order__c> phyOrdNew, Map<Id, Physician_Manual_Order__c> oldPhyOrd){
+  48,117:     public static void handleDiscountConfirmationEmailToCustomer(List<Physician_Manual_Order__c> phyOrdNew, Map<Id, Physician_Manual_Order__c> oldPhyOrd){
+  51,13:         for(Physician_Manual_Order__c ph: [SELECT Id, Contact_Name__c, Contact_Email__c, OwnerId, Owner.Email, Order_Confirmation__c,
+  54,49:                                            FROM Physician_Manual_Order__c 
+  57,13:             Physician_Manual_Order__c oldPhy = oldPhyOrd.get(ph.Id);
+  81,70:     public static void handleRegularConfirmationEmailToCustomer(List<Physician_Manual_Order__c> phyOrdNew, Map<Id, Physician_Manual_Order__c> oldPhyOrd){
+  81,116:     public static void handleRegularConfirmationEmailToCustomer(List<Physician_Manual_Order__c> phyOrdNew, Map<Id, Physician_Manual_Order__c> oldPhyOrd){
+  83,13:         for(Physician_Manual_Order__c ph: [SELECT Id, Contact_Name__c, Contact_Email__c, OwnerId, Owner.Email, Order_Confirmation__c,
+  86,49:                                            FROM Physician_Manual_Order__c 
+  89,13:             Physician_Manual_Order__c oldPhy = oldPhyOrd.get(ph.Id);
+  111,13:         for(Physician_Manual_Order__c phy: [SELECT Id, Contact_Name__c, Contact_Email_formula__c, Contact_Email__c, OwnerId, Owner.Email, Order_Confirmation__c,
+  114,50:                                             FROM Physician_Manual_Order__c 
+  138,63:     public static void sendOrderConfirmationNotification(List<Physician_Manual_Order__c> phyOrdNew, Map<Id, Physician_Manual_Order__c> oldPhyOrd){
+  138,109:     public static void sendOrderConfirmationNotification(List<Physician_Manual_Order__c> phyOrdNew, Map<Id, Physician_Manual_Order__c> oldPhyOrd){
+  145,13:         for(Physician_Manual_Order__c order : phyOrdNew){
+  146,13:             Physician_Manual_Order__c oldOrder = oldPhyOrd.get(order.Id);
+  178,65:     public static void createShippingOrFreeShippingProduct(List<Physician_Manual_Order__c> phyOrdNew, Map<Id, Physician_Manual_Order__c> oldPhyOrd){
+  178,111:     public static void createShippingOrFreeShippingProduct(List<Physician_Manual_Order__c> phyOrdNew, Map<Id, Physician_Manual_Order__c> oldPhyOrd){
+  179,13:         for(Physician_Manual_Order__c opp: phyOrdNew){
+
+
+PhysicianManualOrderHandlerTest.cls
+  16,9:         Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+  16,48:         Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+  53,9:         Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+  53,48:         Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+  88,9:         Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+  88,48:         Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+  122,9:         Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+  122,48:         Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+
+
+PhysicianManualOrderSalesRepBatch.cls
+  18,25:         query += ' FROM Physician_Manual_Order__c';
+  28,60:     global void execute(Database.BatchableContext BC, List<Physician_Manual_Order__c> scope) {
+  34,13:         for(Physician_Manual_Order__c pmo: scope){
+  97,18:             List<Physician_Manual_Order__c> pmoListForUpdate = new List<Physician_Manual_Order__c>();
+  97,73:             List<Physician_Manual_Order__c> pmoListForUpdate = new List<Physician_Manual_Order__c>();
+  98,17:             for(Physician_Manual_Order__c cRecord : scope){
+
+
+PhysicianManualOrderSalesRepTest.cls
+  75,49:             Id recordTypeId =Schema.SObjectType.Physician_Manual_Order__c.getRecordTypeInfosByDeveloperName().get('Physician_Manual_Order').getRecordTypeId();
+  77,13:             Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+  77,52:             Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+
+
+PopulateCustomOppLUBatch.cls
+  17,25:         query += ' FROM Physician_Manual_Order__c WHERE Standard_Opportunity__c != null ';
+  25,60:     global void execute(Database.BatchableContext BC, List<Physician_Manual_Order__c> scope) {
+  28,13:         for(Physician_Manual_Order__c custOpp: scope){
+
+
+PopulateCustomOppLUBatchTest.cls
+  67,9:         Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+  67,48:         Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+  92,9:         Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+  92,48:         Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+  102,9:         Physician_Manual_Order__c opp = [SELECT Id, Standard_Opportunity__c FROM Physician_Manual_Order__c WHERE Id=:newOpp.Id];
+  102,82:         Physician_Manual_Order__c opp = [SELECT Id, Standard_Opportunity__c FROM Physician_Manual_Order__c WHERE Id=:newOpp.Id];
+
+
+SampleFulfillmentAddProductCont.cls
+  7,13:         for(Physician_Manual_Order__c opp : [SELECT Id,PriceBook2Id__c FROM Physician_Manual_Order__c WHERE Id =: opportunityId AND PriceBook2Id__c != null]){
+  7,77:         for(Physician_Manual_Order__c opp : [SELECT Id,PriceBook2Id__c FROM Physician_Manual_Order__c WHERE Id =: opportunityId AND PriceBook2Id__c != null]){
+
+
+SampleFulfillmentAddProductContTest.cls
+  90,9:         Physician_Manual_Order__c opp = new Physician_Manual_Order__c();
+  90,45:         Physician_Manual_Order__c opp = new Physician_Manual_Order__c();
+  102,9:         Physician_Manual_Order__c testOpportunity = [SELECT Id,PriceBook2Id__c,PriceBook2Id__r.Name FROM Physician_Manual_Order__c WHERE PriceBook2Id__c != null LIMIT 1];
+  102,106:         Physician_Manual_Order__c testOpportunity = [SELECT Id,PriceBook2Id__c,PriceBook2Id__r.Name FROM Physician_Manual_Order__c WHERE PriceBook2Id__c != null LIMIT 1];
+
+
+ShopifyOrdersSalesRepBatch.cls
+  19,25:         query += ' FROM Physician_Manual_Order__c';
+  30,60:     global void execute(Database.BatchableContext BC, List<Physician_Manual_Order__c> scope) {
+  36,13:         for(Physician_Manual_Order__c pmo: scope){
+  101,18:             List<Physician_Manual_Order__c> pmoListForUpdate = new List<Physician_Manual_Order__c>();
+  101,73:             List<Physician_Manual_Order__c> pmoListForUpdate = new List<Physician_Manual_Order__c>();
+  102,17:             for(Physician_Manual_Order__c cRecord : scope){
+
+
+ShopifyOrdersSalesRepBatchTest.cls
+  75,49:             Id recordTypeId =Schema.SObjectType.Physician_Manual_Order__c.getRecordTypeInfosByDeveloperName().get('Physician_Manual_Order').getRecordTypeId();
+  77,13:             Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+  77,52:             Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+
+
+SyncRecordsUtility.cls
+  24,97:         List<RecordType> oppRecordTypes = [SELECT Id, Name FROM RecordType WHERE SObjectType = 'Physician_Manual_Order__c'];
+  227,38:                                 List<Physician_Manual_Order__c> customOppList = [SELECT Id, Standard_Opportunity__c FROM Physician_Manual_Order__c WHERE Id =: (Id)cRecord.get(sourceField)];
+  227,122:                                 List<Physician_Manual_Order__c> customOppList = [SELECT Id, Standard_Opportunity__c FROM Physician_Manual_Order__c WHERE Id =: (Id)cRecord.get(sourceField)];
+  254,70:     public static Boolean syncOpportunityRecord(Opportunity sRecord, Physician_Manual_Order__c cRecord, Map<String, String> targetSourceMap, OppRecordTypeHandler opp, CustomOppRecordTypeHandler customOpp, Boolean isStandardSource, Boolean isInsert, Map<Id, Physician_Manual_Order__c> phsyManOrdersMap){
+  254,258:     public static Boolean syncOpportunityRecord(Opportunity sRecord, Physician_Manual_Order__c cRecord, Map<String, String> targetSourceMap, OppRecordTypeHandler opp, CustomOppRecordTypeHandler customOpp, Boolean isStandardSource, Boolean isInsert, Map<Id, Physician_Manual_Order__c> phsyManOrdersMap){
+  316,25:                         Physician_Manual_Order__c moreDetails = phsyManOrdersMap.get(cRecord.Id);
+  483,18:             List<Physician_Manual_Order__c> customRecordToUpdateBackList = new List<Physician_Manual_Order__c>();
+  483,85:             List<Physician_Manual_Order__c> customRecordToUpdateBackList = new List<Physician_Manual_Order__c>();
+  493,25:                         Physician_Manual_Order__c updRecord = new Physician_Manual_Order__c();
+  493,67:                         Physician_Manual_Order__c updRecord = new Physician_Manual_Order__c();
+  664,22:                 List<Physician_Manual_Order__c> recordsToDeleteList = new List<Physician_Manual_Order__c>();
+  664,80:                 List<Physician_Manual_Order__c> recordsToDeleteList = new List<Physician_Manual_Order__c>();
+  666,21:                     Physician_Manual_Order__c deleteCustom = new Physician_Manual_Order__c();
+  666,66:                     Physician_Manual_Order__c deleteCustom = new Physician_Manual_Order__c();
+
+
+UpdateOwnerFromTerritoryBatch.cls
+  72,14:         List<Physician_Manual_Order__c> phyManOrdListForUpdate = new List<Physician_Manual_Order__c>();
+  72,75:         List<Physician_Manual_Order__c> phyManOrdListForUpdate = new List<Physician_Manual_Order__c>();
+  73,13:         for(Physician_Manual_Order__c pmo: [SELECT Contact_Name__c, OwnerId FROM Physician_Manual_Order__c WHERE Contact_Name__c IN: contactIdPostalCodeMap.keySet()]){
+  73,82:         for(Physician_Manual_Order__c pmo: [SELECT Contact_Name__c, OwnerId FROM Physician_Manual_Order__c WHERE Contact_Name__c IN: contactIdPostalCodeMap.keySet()]){
+
+
+UpdateOwnerFromTerritoryBatchTest.cls
+  75,49:             Id recordTypeId =Schema.SObjectType.Physician_Manual_Order__c.getRecordTypeInfosByDeveloperName().get('Physician_Manual_Order').getRecordTypeId();
+  77,13:             Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+  77,52:             Physician_Manual_Order__c newOpp = new Physician_Manual_Order__c();
+
+
+--------------------------------------------
+********** VISUAL FORCE PAGES **********
+--------------------------------------------
+Amazon_Picklist.page
+  1,32: <apex:page standardcontroller="Physician_Manual_Order__c" renderAs="pdf" applyBodyTag="false">
+  33,42:             <b>Opportunity Number:</b> {!Physician_Manual_Order__c.Opportunity_Number__c}<br/>
+  34,36:             <b>Created Date: </b>{!Physician_Manual_Order__c.Created_Date__c}
+  35,34:             <b>Close Date: </b>{!Physician_Manual_Order__c.Close_Date__c}
+  38,31:             <b>Account: </b>{!Physician_Manual_Order__c.AccountId__r.name}<br/>
+  39,36:             <b>Contact Name:</b> {!Physician_Manual_Order__c.Contact_First_and_Last__c}
+  54,68:     <apex:datatable border="1" cellspacing="5" var="opp2" value="{!Physician_Manual_Order__c.Opportunity_Products__r}" style="width:100%; font-size: 13px; font-face: verdana ;border-color: #8abdbf;">
+  55,74:         <apex:facet name="header">Products associated with Opportunity {!Physician_Manual_Order__c.Opportunity_Number__c}</apex:facet>
+  70,32:           <br/>Grand Total: ${!Physician_Manual_Order__c.Amount__c}
+
+//sandbox:sample
+CustomOpportunityProductsPDF.page
+  1,32: <apex:page standardController="Physician_Manual_Order__c" extensions="CustomOpportunityProductsPDFextension" renderAs="pdf" applyBodyTag="false">
+
+//sandbox:partial
+CustomOpportunityProductsPDF.page
+  1,32: <apex:page standardController="Physician_Manual_Order__c" extensions="CustomOpportunityProductsPDFextension" renderAs="pdf" applyBodyTag="false">
+  76,72:         <apex:datatable border="1" cellspacing="5" var="opp2" value="{!Physician_Manual_Order__c.Opportunity_Products__r}" style="width:100%; border-color: #8abdbf;">
+
+Order_Notes_and_Special_Instructions.page
+  1,32: <apex:page standardcontroller="Physician_Manual_Order__c" standardStylesheets="false" showHeader="false">
+  2,11:     <h5>{!Physician_Manual_Order__c.Order_Notes__c}</h5>
+
+
+Order_PDF_Admin.page
+  1,32: <apex:page standardcontroller="Physician_Manual_Order__c" renderAs="pdf" applyBodyTag="false">
+  33,42:             <b>Opportunity Number:</b> {!Physician_Manual_Order__c.Opportunity_Number__c}<br/>
+  34,33:             <b>PO Number:</b> {!Physician_Manual_Order__c.PO_Number__c}<br/>
+  35,27:             <b>Rep:</b> {!Physician_Manual_Order__c.Sales_Rep_formula__c}<br/>
+  36,40:             <b>Type of Business:</b> {!Physician_Manual_Order__c.Type__c}<br/>
+  37,34:             <b>Close Date:</b> {!Physician_Manual_Order__c.Close_Date__c}<br/>
+  38,33:             <b>Promotion:</b> {!Physician_Manual_Order__c.Promotion__c}<br/>
+  39,34:             <b>Trade Show:</b> {!Physician_Manual_Order__c.Trade_Show__c}
+  43,38:             <b>Account Number:</b> {!Physician_Manual_Order__c.AccountId__r.Account_Generator__c}<br/>
+  44,36:             <b>Contact Name:</b> {!Physician_Manual_Order__c.Contact_First_and_Last__c}, {!Physician_Manual_Order__c.Contact_Title__c}<br/>
+  44,92:             <b>Contact Name:</b> {!Physician_Manual_Order__c.Contact_First_and_Last__c}, {!Physician_Manual_Order__c.Contact_Title__c}<br/>
+  45,37:             <b>Contact Phone:</b> {!Physician_Manual_Order__c.Contact_Phone__c}<br/>
+  46,37:             <b>Contact Email:</b> {!Physician_Manual_Order__c.Contact_Email_formula__c}<br/>
+  47,49:             <b>Account Setup Form Status:</b> {!Physician_Manual_Order__c.Resale_Policy_Stocking_Form__c}
+  62,15:             {!Physician_Manual_Order__c.AccountId__r.name}<br/>
+  63,15:             {!Physician_Manual_Order__c.Contact_Shipping_Address__c}<br/><br/>
+  64,45:             <b>Waive Shipping Charge:</b> {!Physician_Manual_Order__c.Waive_Shipping_Charge__c}
+  67,15:             {!Physician_Manual_Order__c.AccountId__r.name}<br/>
+  68,15:             {!Physician_Manual_Order__c.Contact_Other_Address__c}<br/><br/>
+  69,44:             <b>Invoice- 30 Day Term:</b> {!Physician_Manual_Order__c.Invoice_30_Day_Term__c}
+  83,43:             <b>Charge Card on File:</b> {!Physician_Manual_Order__c.Charge_Card_on_File__c}<br/>
+  84,35:             <b>Credit Card:</b> {!Physician_Manual_Order__c.Credit_Card__c}<br/>
+  85,39:             <b>Credit Card Exp:</b> {!Physician_Manual_Order__c.Credit_Card_Exp_Date__c}
+  89,40:             <b>Rep Confirm Date:</b> {!Physician_Manual_Order__c.TEXTDate_Order_Confirmed_by_Rep__c}<br/>
+  90,45:             <b>Customer Confirm Date:</b> {!Physician_Manual_Order__c.TEXTDate_Order_Confirmed_by_Customer__c}<br/>
+  91,43:             <b>Manual Confirm Date:</b> {!Physician_Manual_Order__c.Date_Manually_Confirmed__c}
+  105,15:             {!Physician_Manual_Order__c.special_customer_instructions__c}
+  108,15:             {!Physician_Manual_Order__c.Order_Notes__c}
+  116,68:     <apex:datatable border="1" cellspacing="5" var="opp2" value="{!Physician_Manual_Order__c.Opportunity_Products__r}" style="width:100%; font-size: 13px; font-face: verdana ;border-color: #8abdbf;">
+  117,74:         <apex:facet name="header">Products associated with Opportunity {!Physician_Manual_Order__c.Opportunity_Number__c}</apex:facet>
+  132,32:           <br/>Grand Total: ${!Physician_Manual_Order__c.Amount__c}
+
+
+Orders_Amazon_Signatures.page
+  1,32: <apex:page standardcontroller="Physician_Manual_Order__c">
+  20,49:         <apex:outputField label="Name" value="{!Physician_Manual_Order__c.Amazon_Manager_Sig__c}" />
+  21,45:         <apex:outputField label="" value="{!Physician_Manual_Order__c.Blank_Field__c}" />  
+  22,55:         <apex:inputField label="Password" rendered="{!Physician_Manual_Order__c.Amazon_Manager_Sig__c = ""}" value="{!Physician_Manual_Order__c.Amazon_Manager_Auth__c}" /> 
+  22,119:         <apex:inputField label="Password" rendered="{!Physician_Manual_Order__c.Amazon_Manager_Sig__c = ""}" value="{!Physician_Manual_Order__c.Amazon_Manager_Auth__c}" /> 
+  23,55:         <apex:inputField label="Password" rendered="{!Physician_Manual_Order__c.Amazon_Manager_Sig__c <> ""}" html-disabled=" true" value="{!Physician_Manual_Order__c.Amazon_Manager_Auth__c}" />
+  23,142:         <apex:inputField label="Password" rendered="{!Physician_Manual_Order__c.Amazon_Manager_Sig__c <> ""}" html-disabled=" true" value="{!Physician_Manual_Order__c.Amazon_Manager_Auth__c}" />
+  32,49:         <apex:outputField label="Name" value="{!Physician_Manual_Order__c.Production_Lead_Sig__c}" />  
+  33,45:         <apex:outputField label="" value="{!Physician_Manual_Order__c.Blank_Field__c}" />
+  34,55:         <apex:inputField label="Password" rendered="{!Physician_Manual_Order__c.Production_Lead_Sig__c = ""}" value="{!Physician_Manual_Order__c.Production_Lead_Auth__c}" />  
+  34,120:         <apex:inputField label="Password" rendered="{!Physician_Manual_Order__c.Production_Lead_Sig__c = ""}" value="{!Physician_Manual_Order__c.Production_Lead_Auth__c}" />  
+  35,55:         <apex:inputField label="Password" rendered="{!Physician_Manual_Order__c.Production_Lead_Sig__c <> ""}" html-disabled=" true" value="{!Physician_Manual_Order__c.Production_Lead_Auth__c}" /> 
+  35,143:         <apex:inputField label="Password" rendered="{!Physician_Manual_Order__c.Production_Lead_Sig__c <> ""}" html-disabled=" true" value="{!Physician_Manual_Order__c.Production_Lead_Auth__c}" /> 
+  45,49:         <apex:outputField label="Name" value="{!Physician_Manual_Order__c.Order_Fullfillment_Specialist_Sig__c}" /> 
+  46,45:         <apex:outputField label="" value="{!Physician_Manual_Order__c.Blank_Field__c}" />
+  47,55:         <apex:inputField label="Password" rendered="{!Physician_Manual_Order__c.Order_Fullfillment_Specialist_Sig__c = ""}" value="{!Physician_Manual_Order__c.Order_Fullfillment_Specialist_Auth__c}" /> 
+  47,134:         <apex:inputField label="Password" rendered="{!Physician_Manual_Order__c.Order_Fullfillment_Specialist_Sig__c = ""}" value="{!Physician_Manual_Order__c.Order_Fullfillment_Specialist_Auth__c}" /> 
+  48,55:         <apex:inputField label="Password" rendered="{!Physician_Manual_Order__c.Order_Fullfillment_Specialist_Sig__c <> ""}" html-disabled=" true" value="{!Physician_Manual_Order__c.Order_Fullfillment_Specialist_Auth__c}" />   
+  48,157:         <apex:inputField label="Password" rendered="{!Physician_Manual_Order__c.Order_Fullfillment_Specialist_Sig__c <> ""}" html-disabled=" true" value="{!Physician_Manual_Order__c.Order_Fullfillment_Specialist_Auth__c}" />   
+  57,49:         <apex:outputField label="Name" value="{!Physician_Manual_Order__c.In_Process_Inspection_Sig__c}" /> 
+  58,45:         <apex:outputField label="" value="{!Physician_Manual_Order__c.Blank_Field__c}" />
+  59,55:         <apex:inputField label="Password" rendered="{!Physician_Manual_Order__c.In_Process_Inspection_Sig__c = ""}" value="{!Physician_Manual_Order__c.In_Process_Inspection_Auth__c}" />  
+  59,126:         <apex:inputField label="Password" rendered="{!Physician_Manual_Order__c.In_Process_Inspection_Sig__c = ""}" value="{!Physician_Manual_Order__c.In_Process_Inspection_Auth__c}" />  
+  60,55:         <apex:inputField label="Password" rendered="{!Physician_Manual_Order__c.In_Process_Inspection_Sig__c <> ""}" html-disabled=" true" value="{!Physician_Manual_Order__c.In_Process_Inspection_Auth__c}" />
+  60,149:         <apex:inputField label="Password" rendered="{!Physician_Manual_Order__c.In_Process_Inspection_Sig__c <> ""}" html-disabled=" true" value="{!Physician_Manual_Order__c.In_Process_Inspection_Auth__c}" />
+  69,49:         <apex:outputField label="Name" value="{!Physician_Manual_Order__c.Packer_Sig__c}" /> 
+  70,45:         <apex:outputField label="" value="{!Physician_Manual_Order__c.Blank_Field__c}" />
+  71,55:         <apex:inputField label="Password" rendered="{!Physician_Manual_Order__c.Packer_Sig__c = ""}" value="{!Physician_Manual_Order__c.Packer_Auth__c}" />  
+  71,111:         <apex:inputField label="Password" rendered="{!Physician_Manual_Order__c.Packer_Sig__c = ""}" value="{!Physician_Manual_Order__c.Packer_Auth__c}" />  
+  72,55:         <apex:inputField label="Password" rendered="{!Physician_Manual_Order__c.Packer_Sig__c <> ""}" html-disabled=" true" value="{!Physician_Manual_Order__c.Packer_Auth__c}" />
+  72,134:         <apex:inputField label="Password" rendered="{!Physician_Manual_Order__c.Packer_Sig__c <> ""}" html-disabled=" true" value="{!Physician_Manual_Order__c.Packer_Auth__c}" />
+  81,49:         <apex:outputField label="Name" value="{!Physician_Manual_Order__c.Final_Inspection_Sig__c}" /> 
+  82,45:         <apex:outputField label="" value="{!Physician_Manual_Order__c.Blank_Field__c}" />
+  83,55:         <apex:inputField label="Password" rendered="{!Physician_Manual_Order__c.Final_Inspection_Sig__c = ""}" value="{!Physician_Manual_Order__c.Final_Inspection_Auth__c}" />
+  83,121:         <apex:inputField label="Password" rendered="{!Physician_Manual_Order__c.Final_Inspection_Sig__c = ""}" value="{!Physician_Manual_Order__c.Final_Inspection_Auth__c}" />
+  84,55:         <apex:inputField label="Password" rendered="{!Physician_Manual_Order__c.Final_Inspection_Sig__c <> ""}" html-disabled=" true" value="{!Physician_Manual_Order__c.Final_Inspection_Auth__c}" />
+  84,144:         <apex:inputField label="Password" rendered="{!Physician_Manual_Order__c.Final_Inspection_Sig__c <> ""}" html-disabled=" true" value="{!Physician_Manual_Order__c.Final_Inspection_Auth__c}" />
+  93,49:         <apex:outputField label="Name" value="{!Physician_Manual_Order__c.Production_Manager_Sig__c}" />
+  94,45:         <apex:outputField label="" value="{!Physician_Manual_Order__c.Blank_Field__c}" />
+  95,55:         <apex:inputField label="Password" rendered="{!Physician_Manual_Order__c.Production_Manager_Sig__c = ""}" value="{!Physician_Manual_Order__c.Production_Manager_Auth__c}" />   
+  95,123:         <apex:inputField label="Password" rendered="{!Physician_Manual_Order__c.Production_Manager_Sig__c = ""}" value="{!Physician_Manual_Order__c.Production_Manager_Auth__c}" />   
+  96,55:         <apex:inputField label="Password" rendered="{!Physician_Manual_Order__c.Production_Manager_Sig__c <> ""}" html-disabled=" true" value="{!Physician_Manual_Order__c.Production_Manager_Auth__c}" />  
+  96,146:         <apex:inputField label="Password" rendered="{!Physician_Manual_Order__c.Production_Manager_Sig__c <> ""}" html-disabled=" true" value="{!Physician_Manual_Order__c.Production_Manager_Auth__c}" />
+
+//not in sandbox:sample but found in sandbox:partial.
+Sample_Fulfillment_Work_Order.page
+  1,32: <apex:page standardController="Physician_Manual_Order__c" extensions="CustomOpportunityProductsPDFextension" renderAs="pdf" applyBodyTag="false">
+  76,72:         <apex:datatable border="1" cellspacing="5" var="opp2" value="{!Physician_Manual_Order__c.Opportunity_Products__r}" style="width:100%; border-color: #8abdbf;">
+
+
+
+--------------------------------------------
+********** APEX TRIGGERS **********
+--------------------------------------------
+CustomOpportunityTrigger.trigger
+  1,37: trigger CustomOpportunityTrigger on Physician_Manual_Order__c (before insert, before update, before delete, after delete, after insert, after update) {
+
+
+dlrs_Physician_Manual_OrderTrigger.trigger
+  4,47: trigger dlrs_Physician_Manual_OrderTrigger on Physician_Manual_Order__c
+  7,39:     dlrs.RollupService.triggerHandler(Physician_Manual_Order__c.SObjectType);
+
+
+PhysicianManualOrderTrigger.trigger
+  1,40: trigger PhysicianManualOrderTrigger on Physician_Manual_Order__c (after insert ,after update) {
