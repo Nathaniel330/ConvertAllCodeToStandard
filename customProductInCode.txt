@@ -1,0 +1,343 @@
+248 RESULTS IN 27 FILES | SANDBOX: PARTIAL
+--------------------------------------------
+********** AURA COMPONENT **********
+--------------------------------------------
+
+CarStockAddProductDetailController.js
+  6,39:         if(component.get('v.objectRec.Product__c') != null){
+  8,105:             strExample = strExample + '{"icon":"standard:products","id":"' + component.get('v.objectRec.Product__c')  + '","sObjectType":"Product__c","subtitle":"Products • ' + component.get('v.objectRec.Product__c.Name') + '","title":"' + component.get('v.objectRec.Product__c.Name') + '"}';
+  8,139:             strExample = strExample + '{"icon":"standard:products","id":"' + component.get('v.objectRec.Product__c')  + '","sObjectType":"Product__c","subtitle":"Products • ' + component.get('v.objectRec.Product__c.Name') + '","title":"' + component.get('v.objectRec.Product__c.Name') + '"}';
+  8,205:             strExample = strExample + '{"icon":"standard:products","id":"' + component.get('v.objectRec.Product__c')  + '","sObjectType":"Product__c","subtitle":"Products • ' + component.get('v.objectRec.Product__c.Name') + '","title":"' + component.get('v.objectRec.Product__c.Name') + '"}';
+  8,268:             strExample = strExample + '{"icon":"standard:products","id":"' + component.get('v.objectRec.Product__c')  + '","sObjectType":"Product__c","subtitle":"Products • ' + component.get('v.objectRec.Product__c.Name') + '","title":"' + component.get('v.objectRec.Product__c.Name') + '"}';
+  49,36:         component.set("v.objectRec.Product__c", null);
+  53,40:             component.set("v.objectRec.Product__c", sObjRec.id);
+
+
+CustomAddProduct.cmp
+  143,89:                                             <ui:outputURL value="{!'/'+pbe.priceBookEnt.Product__c}" label="{!pbe.priceBookEnt.Product__r.Name}" aura:id="detailContURL" target="_new"/>
+
+
+SampleFulfillmentAddProduct.cmp
+  147,89:                                             <ui:outputURL value="{!'/'+pbe.priceBookEnt.Product__c}" label="{!pbe.priceBookEnt.Product__r.Name}" aura:id="detailContURL" target="_new"/>
+
+
+
+--------------------------------------------
+********** APEX CLASSES **********
+--------------------------------------------
+
+ApproveOrRejectCarStockTest.cls
+  33,9:         Product__c proCust = new Product__c();
+  33,34:         Product__c proCust = new Product__c();
+  39,26:         proCust.Standard_Product__c = prod.Id;
+  47,23:                 cItem.Product__c = proCust.Id;
+  96,9:         Product__c proCust = new Product__c();
+  96,34:         Product__c proCust = new Product__c();
+  102,26:         proCust.Standard_Product__c = prod.Id;
+  110,23:                 cItem.Product__c = proCust.Id;
+
+
+CarStockAddProductCompCont.cls
+  10,9:         Product__c (Id, Name WHERE id NOT IN :selectedIds AND Active__c = true)
+  16,9:         Product__c [] products = ((List<Product__c>) searchResults[0]);
+  16,41:         Product__c [] products = ((List<Product__c>) searchResults[0]);
+  17,14:         for (Product__c product : products) {
+  18,61:             results.add(new LookupSearchResult(product.Id, 'Product__c', productIcon, product.Name, product.Name));
+  39,56:             results.add(new LookupSearchResult(invProd.Product__c, 'Product__c', productIcon, invProd.Product__r.Name, invProd.Product__r.Name));
+  39,69:             results.add(new LookupSearchResult(invProd.Product__c, 'Product__c', productIcon, invProd.Product__r.Name, invProd.Product__r.Name));
+  110,52:                 if(!carStockItemMap.containsKey(ci.Product__c)){
+  111,44:                     carStockItemMap.put(ci.Product__c, ci);
+  113,73:                     Car_Stock_Item__c carExist = carStockItemMap.get(ci.Product__c);
+  116,44:                     carStockItemMap.put(ci.Product__c, carExist);
+  120,21:             Map<Id, Product__c> productMap = new Map<Id, Product__c>();
+  120,58:             Map<Id, Product__c> productMap = new Map<Id, Product__c>();
+  121,17:             for(Product__c pro: [SELECT Id, Name FROM Product__c WHERE Id IN: carStockItemMap.keySet()]){
+  121,55:             for(Product__c pro: [SELECT Id, Name FROM Product__c WHERE Id IN: carStockItemMap.keySet()]){
+  130,55:                     cItem.Name = productMap.get(cItem.Product__c).Name;
+  158,68:         for(Car_Stock_Inventory__c cInv: [SELECT Id, Sales_Rep__c, Product__c, Quantity__c FROM Car_Stock_Inventory__c WHERE Sales_Rep__c =: UserInfo.getUserId()]){
+  159,73:             if(!carStockInvMap.containsKey(cInv.Sales_Rep__c +'-'+ cInv.Product__c)){
+  160,65:                 carStockInvMap.put(cInv.Sales_Rep__c +'-'+ cInv.Product__c, cInv);
+  168,37:                 productIdSet.add(ci.Product__c);
+  171,21:             Map<Id, Product__c> productMap = new Map<Id, Product__c>();
+  171,58:             Map<Id, Product__c> productMap = new Map<Id, Product__c>();
+  172,17:             for(Product__c pro: [SELECT Id, Name FROM Product__c WHERE Id IN: productIdSet]){
+  172,55:             for(Product__c pro: [SELECT Id, Name FROM Product__c WHERE Id IN: productIdSet]){
+  181,57:                 carItems.Name = productMap.get(carItems.Product__c).Name;
+  198,76:                 if(!carStockItemMap.containsKey(cIt.Sales_Rep__c +'-'+ cIt.Product__c)){
+  199,68:                     carStockItemMap.put(cIt.Sales_Rep__c +'-'+ cIt.Product__c, cIt.Quantity_Delivered__c);
+  201,68:                     carStockItemMap.put(cIt.Sales_Rep__c +'-'+ cIt.Product__c, carStockItemMap.get(cIt.Sales_Rep__c +'-'+ cIt.Product__c) + cIt.Quantity_Delivered__c);
+  201,127:                     carStockItemMap.put(cIt.Sales_Rep__c +'-'+ cIt.Product__c, carStockItemMap.get(cIt.Sales_Rep__c +'-'+ cIt.Product__c) + cIt.Quantity_Delivered__c);
+
+
+CarStockAddProductsCompTest.cls
+  36,9:         Product__c proCust = new Product__c();
+  36,34:         Product__c proCust = new Product__c();
+  42,26:         proCust.Standard_Product__c = prod.Id;
+  50,23:                 cItem.Product__c = proCust.Id;
+  98,9:         Product__c proCust = new Product__c();
+  98,34:         Product__c proCust = new Product__c();
+  104,26:         proCust.Standard_Product__c = prod.Id;
+  112,23:                 cItem.Product__c = proCust.Id;
+
+CarStockItemsControllerTest.cls
+  34,9:         Product__c proCust = new Product__c();
+  34,34:         Product__c proCust = new Product__c();
+  40,26:         proCust.Standard_Product__c = prod.Id;
+  48,23:                 cItem.Product__c = proCust.Id;
+
+
+CarStockItemTriggerHandlerTest.cls
+  15,9:         Product__c proCust = new Product__c();
+  15,34:         Product__c proCust = new Product__c();
+  21,26:         proCust.Standard_Product__c = prod.Id;
+  29,23:                 cItem.Product__c = proCust.Id;
+
+CarStockTriggerHandler.cls
+  25,68:         for(Car_Stock_Inventory__c cInv: [SELECT Id, Sales_Rep__c, Product__c, Quantity__c FROM Car_Stock_Inventory__c WHERE Sales_Rep__c IN: salesRepIdSet]){
+  26,73:             if(!carStockInvMap.containsKey(cInv.Sales_Rep__c +'-'+ cInv.Product__c)){
+  27,65:                 carStockInvMap.put(cInv.Sales_Rep__c +'-'+ cInv.Product__c, cInv);
+  33,109:         for(Car_Stock_Item__c ctItem: [SELECT Id, Car_Stock_Request__c, Quantity_Approved__c, Sales_Rep__c, Product__c, Product__r.Name, Status__c 
+  37,68:             if(carStockInvMap.get(ctItem.Sales_Rep__c +'-'+ ctItem.Product__c)!=null){
+  38,106:                 Car_Stock_Inventory__c ctInvUpdate = carStockInvMap.get(ctItem.Sales_Rep__c +'-'+ ctItem.Product__c);
+  46,27:                     ctInv.Product__c = ctItem.Product__c;
+  46,47:                     ctInv.Product__c = ctItem.Product__c;
+
+
+CarStockTriggerHandlerTest.cls
+  16,9:         Product__c proCust = new Product__c();
+  16,34:         Product__c proCust = new Product__c();
+  22,26:         proCust.Standard_Product__c = prod.Id;
+  30,23:                 cItem.Product__c = proCust.Id;
+
+
+
+CustomAddProductController.cls
+  13,40:             String sSoql = 'SELECT Id, Product__c, Product__r.Name, Product__r.Family__c, Product__r.Description__c,Product__r.Bottle_Qty__c, Product_Code__c, UnitPrice__c ';
+  14,128:             sSoql += 'FROM PricebookEntry__c WHERE Active__c = true AND Pricebook2Id__c =: pricebookId AND Product__r.Discount_Product__c = false ';
+  51,66:         List<PricebookEntry__c> pricebookEntryList = [SELECT Id, Product__c, Product__r.Name 
+  53,137:                                                       WHERE Active__c = true AND Pricebook2Id__c =: pricebookId AND Product__r.Discount_Product__c = true ORDER BY Product__r.Name];
+  77,66:         List<PricebookEntry__c> pricebookEntryList = [SELECT Id, Product__c, Product__r.Name FROM PricebookEntry__c 
+  78,137:                                                       WHERE Active__c = true AND Pricebook2Id__c =: pricebookId AND Product__r.Discount_Product__c = true ORDER BY Product__r.Name];
+  124,40:             String query = 'SELECT Id, Product__c, Product__r.Name, Product__r.Family__c, Product__r.Description__c, Product_Code__c, UnitPrice__c FROM PricebookEntry__c WHERE Active__c = true AND Pricebook2Id__c = \'' + pricebookId + '\' AND Product__r.Discount_Product__c = false AND (Product__r.Name LIKE \'%' + productName + '%\' OR Product_Code__c LIKE \'%' + productName + '%\')';
+  124,264:             String query = 'SELECT Id, Product__c, Product__r.Name, Product__r.Family__c, Product__r.Description__c, Product_Code__c, UnitPrice__c FROM PricebookEntry__c WHERE Active__c = true AND Pricebook2Id__c = \'' + pricebookId + '\' AND Product__r.Discount_Product__c = false AND (Product__r.Name LIKE \'%' + productName + '%\' OR Product_Code__c LIKE \'%' + productName + '%\')';
+  146,57:         List<PricebookEntry__c> pbEntList = [SELECT Id, Product__c, Product__r.Name, Product__r.Family__c, Product__r.Description__c,Product__r.Bottle_Qty__c, Product_Code__c, UnitPrice__c 
+  163,66:         List<PricebookEntry__c> pricebookEntryRecs = [SELECT Id, Product__c, Product__r.Name, Product__r.Family__c, Product__r.Description__c,Product__r.Bottle_Qty__c, Product_Code__c, UnitPrice__c 
+  195,49:             oliRec.Product2Id__c = priceBookEnt.Product__c;
+  234,66:             for(PricebookEntry__c pbe: [SELECT Id, UnitPrice__c, Product__c, Product_Code__c, Product__r.Discount__c, Product__r.Name,Product__r.Bottle_Qty__c FROM PricebookEntry__c WHERE Id IN: pbeIds]){
+  286,56:                     oliDiscount.Product2Id__c = pbeRec.Product__c;
+  318,60:                 // pricebookEntryForShipping = [SELECT Id, Product__c, Product__r.Name, Product__r.Discount__c, Product_Code__c,Product__r.Bottle_Qty__c FROM PricebookEntry__c 
+  319,145:                 //                              WHERE Active__c = true AND Pricebook2Id__c =: oppRecord.Pricebook2Id__c AND Product__r.Discount_Product__c = true AND Product__r.Name = 'Free Shipping Discount' LIMIT 1];
+  320,57:                 pricebookEntryForShipping = [SELECT Id, Product__c, Product__r.Name, Product__r.Discount__c, Product_Code__c,Product__r.Bottle_Qty__c FROM PricebookEntry__c 
+  321,139:                                              WHERE Active__c = true AND Pricebook2Id__c =: oppRecord.Pricebook2Id AND Product__r.Discount_Product__c = true AND Product__r.Name = 'Free Shipping Discount' LIMIT 1];
+  331,52:                 oliShipping.Product2Id__c = pbeRec.Product__c;
+  353,21:                 for(Product__c cPrd : [SELECT Id,Product_Code__c,Bottle_Qty__c FROM Product__c WHERE Product_Code__c IN:productBottleCodes AND Bottle_Qty__c != null]){
+  353,85:                 for(Product__c cPrd : [SELECT Id,Product_Code__c,Bottle_Qty__c FROM Product__c WHERE Product_Code__c IN:productBottleCodes AND Bottle_Qty__c != null]){
+  357,69:                 // PricebookEntry__c bottleDiscountPBE = [SELECT Id,Product__c,Product__r.Name,Product__r.Discount__c,Product_Code__c,Product__r.Bottle_Qty__c
+  359,155:                 //                                        WHERE Active__c = true AND Pricebook2Id__c =: oppRecord.Pricebook2Id__c AND Product__r.Discount_Product__c = true AND Product__r.Name = 'Acne Scar Promotion - 100%' LIMIT 1];
+  360,66:                 PricebookEntry__c bottleDiscountPBE = [SELECT Id,Product__c,Product__r.Name,Product__r.Discount__c,Product_Code__c,Product__r.Bottle_Qty__c
+  362,149:                                                        WHERE Active__c = true AND Pricebook2Id__c =: oppRecord.Pricebook2Id AND Product__r.Discount_Product__c = true AND Product__r.Name = 'Acne Scar Promotion - 100%' LIMIT 1];
+  392,85:                         freeBottleProductDiscount.Product2Id__c = bottleDiscountPBE.Product__c;
+  446,40:             String query = 'SELECT Id, Product__c, Product__r.Name,Product__r.Family__c,Product__r.Description__c,Product_Code__c, UnitPrice__c FROM PricebookEntry__c WHERE Active__c = true AND Pricebook2Id__c = \'' + pricebookId + '\' AND (Product__r.Name LIKE \'%' + productName + '%\' OR Product_Code__c LIKE \'%' + productName + '%\')';
+  466,66:         List<PricebookEntry__c> pricebookEntryRecs = [SELECT Id, Product__c, Product__r.Name, Product__r.Family__c, Product__r.Description__c, Product_Code__c, UnitPrice__c 
+  476,49:             oliRec.Product2Id__c = priceBookEnt.Product__c;
+  551,36:         String query = 'SELECT Id, Product__c, Product__r.Name, Product__r.Family__c, Product__r.Description__c, Product_Code__c, UnitPrice__c FROM PricebookEntry__c WHERE Active__c = true';
+
+
+CustomAddProductControllerTest.cls
+  58,9:         Product__c newProd = new Product__c();
+  58,34:         Product__c newProd = new Product__c();
+  69,9:         Product__c customProd = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: newProd.Id LIMIT 1];
+  69,54:         Product__c customProd = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: newProd.Id LIMIT 1];
+  69,70:         Product__c customProd = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: newProd.Id LIMIT 1];
+  71,66:         insert new PriceBookEntry(Product2Id=customProd.Standard_Product__c, Pricebook2Id=Test.getStandardPricebookId(), UnitPrice=0);
+  75,28:         pricebookEntryItem.Product__c = newProd.Id;
+  119,37:         Id prodId = [SELECT Id FROM Product__c LIMIT 1].Id;
+
+
+CustomOpportunityProductTriggerTest.cls
+  71,9:         Product__c newProd = new Product__c();
+  71,34:         Product__c newProd = new Product__c();
+  89,9:         Product__c customProd = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: newProd.Id LIMIT 1];
+  89,54:         Product__c customProd = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: newProd.Id LIMIT 1];
+  89,70:         Product__c customProd = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: newProd.Id LIMIT 1];
+  91,66:         insert new PriceBookEntry(Product2Id=customProd.Standard_Product__c, Pricebook2Id=Test.getStandardPricebookId(), UnitPrice=0);
+  95,28:         pricebookEntryItem.Product__c = newProd.Id;
+  148,9:         Product__c newProd = new Product__c();
+  148,34:         Product__c newProd = new Product__c();
+  163,9:         Product__c customProd = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: newProd.Id LIMIT 1];
+  163,54:         Product__c customProd = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: newProd.Id LIMIT 1];
+  163,70:         Product__c customProd = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: newProd.Id LIMIT 1];
+  165,66:         insert new PriceBookEntry(Product2Id=customProd.Standard_Product__c, Pricebook2Id=Test.getStandardPricebookId(), UnitPrice=0);
+  169,28:         pricebookEntryItem.Product__c = newProd.Id;
+
+
+CustomPricebookEntryTriggerHandlerTest.cls
+  19,9:         Product__c newProd = new Product__c();
+  19,34:         Product__c newProd = new Product__c();
+  30,9:         Product__c customProd = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: newProd.Id LIMIT 1];
+  30,54:         Product__c customProd = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: newProd.Id LIMIT 1];
+  30,70:         Product__c customProd = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: newProd.Id LIMIT 1];
+  32,66:         insert new PriceBookEntry(Product2Id=customProd.Standard_Product__c, Pricebook2Id=Test.getStandardPricebookId(), UnitPrice=0);
+  36,28:         pricebookEntryItem.Product__c = newProd.Id;
+  45,9:         Product__c newProd = new Product__c();
+  45,34:         Product__c newProd = new Product__c();
+  57,9:         Product__c customProd = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: newProd.Id LIMIT 1];
+  57,54:         Product__c customProd = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: newProd.Id LIMIT 1];
+  57,70:         Product__c customProd = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: newProd.Id LIMIT 1];
+  58,46:         System.debug('@@@customProd.Standard_Product__c: ' + customProd.Standard_Product__c);
+  58,82:         System.debug('@@@customProd.Standard_Product__c: ' + customProd.Standard_Product__c);
+  59,66:         insert new PriceBookEntry(Product2Id=customProd.Standard_Product__c, Pricebook2Id=Test.getStandardPricebookId(), UnitPrice=0);
+  63,28:         pricebookEntryItem.Product__c = newProd.Id;
+
+
+
+CustomProductTriggerHandler.cls
+  10,34:                             List<Product__c> newList, Map<Id, Product__c> newMap,
+  10,63:                             List<Product__c> newList, Map<Id, Product__c> newMap,
+  11,34:                             List<Product__c> oldList, Map<Id, Product__c> oldMap){
+  11,63:                             List<Product__c> oldList, Map<Id, Product__c> oldMap){
+  23,17:             for(Product__c customRecord : oldList){
+  24,42:                 if(customRecord.Standard_Product__c != null){
+  25,65:                     standardRecordIds.add(customRecord.Standard_Product__c);
+  38,21:                 for(Product__c cRecord : newList){
+  44,45:                         if(cRecord.Standard_Product__c != null){
+  45,81:                             Product2 sRecord = new Product2(Id=cRecord.Standard_Product__c);
+
+
+CustomProductTriggerHandlerTest.cls
+  19,9:         Product__c newProd = new Product__c();
+  19,34:         Product__c newProd = new Product__c();
+  28,9:         Product__c newProd = new Product__c();
+  28,34:         Product__c newProd = new Product__c();
+  36,9:         Product__c standardProd = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: newProd.Id LIMIT 1];
+  36,56:         Product__c standardProd = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: newProd.Id LIMIT 1];
+  36,72:         Product__c standardProd = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: newProd.Id LIMIT 1];
+  45,9:         Product__c newProd = new Product__c();
+  45,34:         Product__c newProd = new Product__c();
+  53,9:         Product__c standardProd = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: newProd.Id LIMIT 1];
+  53,56:         Product__c standardProd = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: newProd.Id LIMIT 1];
+  53,72:         Product__c standardProd = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: newProd.Id LIMIT 1];
+
+
+
+EmailFilteredProductsCont.cls
+  7,113:             AND Product2Id__r.Name NOT IN ('Shipping Fee', 'Free Shipping Discount') AND Product2Id__r.Discount_Product__c = false ORDER BY Order_no__c ASC];
+
+
+EmailFilteredProductsContTest.cls
+  58,9:         Product__c newProd = new Product__c();
+  58,34:         Product__c newProd = new Product__c();
+  69,9:         Product__c customProd = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: newProd.Id LIMIT 1];
+  69,54:         Product__c customProd = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: newProd.Id LIMIT 1];
+  69,70:         Product__c customProd = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: newProd.Id LIMIT 1];
+  71,66:         insert new PriceBookEntry(Product2Id=customProd.Standard_Product__c, Pricebook2Id=Test.getStandardPricebookId(), UnitPrice=0);
+  75,28:         pricebookEntryItem.Product__c = newProd.Id;
+
+
+MergeDuplicateProductsBatch.cls
+  202,62:             List<Product2> dupeProducts = [SELECT Id, Custom_Product__c FROM Product2 WHERE Id IN: dupeProdIds];
+  205,54:                 customProductIds.add(dupeProd.Custom_Product__c);
+  209,40:                 delete [SELECT Id FROM Product__c WHERE Id IN: customProductIds];
+  210,64:                 delete [SELECT Id FROM PricebookEntry__c WHERE Product__c IN: customProductIds];
+
+
+PhysicianManualOrderHandler.cls
+  196,49:         PricebookEntry__c pbEntry = [SELECT Id, Product__c, Product_Code__c FROM PricebookEntry__c WHERE Active__c = true AND Pricebook2Id__c =: pricebookId 
+  199,150:         List<OpportunityLineItem__c> productId = [SELECT Id FROM OpportunityLineItem__c WHERE OpportunityId__c =: oppId AND Product2Id__c =: pbEntry.Product__c];
+  211,49:             oliShipping.Product2Id__c = pbEntry.Product__c;
+  221,60:         PricebookEntry__c pbEntryShippingFee = [SELECT Id, Product__c, Product_Code__c FROM PricebookEntry__c WHERE Active__c = true AND Pricebook2Id__c =: pricebookId 
+  224,64:         PricebookEntry__c pbEntryFreeShippingFee = [SELECT Id, Product__c, Product_Code__c FROM PricebookEntry__c WHERE Active__c = true AND Pricebook2Id__c =: pricebookId 
+  228,168:         List<OpportunityLineItem__c> existingShipping = [SELECT Id FROM OpportunityLineItem__c WHERE OpportunityId__c =: oppId AND Product2Id__c =: pbEntryShippingFee.Product__c];
+  233,165:         List<OpportunityLineItem__c> productId = [SELECT Id FROM OpportunityLineItem__c WHERE OpportunityId__c =: oppId AND Product2Id__c =: pbEntryFreeShippingFee.Product__c];
+  246,63:             oliShippingFee.Product2Id__c = pbEntryShippingFee.Product__c;
+  257,68:             oliFreeShipping.Product2Id__c = pbEntryFreeShippingFee.Product__c;
+
+
+ProductTriggerHandler.cls
+  17,17:         Map<Id, Product__c> sIdToCustomRecordInsertMap = new Map<Id, Product__c>(); 
+  17,70:         Map<Id, Product__c> sIdToCustomRecordInsertMap = new Map<Id, Product__c>(); 
+  18,14:         List<Product__c> customRecordsToUpdateList = new List<Product__c>();
+  18,63:         List<Product__c> customRecordsToUpdateList = new List<Product__c>();
+  31,42:                 if(standardRecord.Custom_Product__c != null){
+  32,63:                     customRecordIds.add(standardRecord.Custom_Product__c);
+  46,25:                         Product__c cRecord = new Product__c();
+  46,50:                         Product__c cRecord = new Product__c();
+  50,43:                         if(sRecord.Custom_Product__c != null){
+  51,29:                             Product__c cRecord = new Product__c(Id=sRecord.Custom_Product__c);
+  51,54:                             Product__c cRecord = new Product__c(Id=sRecord.Custom_Product__c);
+  51,83:                             Product__c cRecord = new Product__c(Id=sRecord.Custom_Product__c);
+
+
+ProductTriggerHandlerTest.cls
+  28,52:         Product2 standardProd = [SELECT Id, Custom_Product__c FROM Product2 WHERE Id =: newProd.Id LIMIT 1];
+  45,52:         Product2 standardProd = [SELECT Id, Custom_Product__c FROM Product2 WHERE Id =: newProd.Id LIMIT 1];
+
+
+RelateCustomLineItemsBatch.cls
+  15,128:         String query = 'SELECT Id, Name, Credit__c, ServiceDate, Discount, Description, ListPrice, Product2Id, Product2.Custom_Product__c,';
+  42,61:             customItem.Product2Id__c = item.Product2.Custom_Product__c;
+
+
+SampleFulfillmentAddProductCont.cls
+  39,42:             String pbeSOQL = 'SELECT Id, Product__c, Product__r.Name, Product__r.Family__c, Product__r.Description__c,Product__r.Bottle_Qty__c, Product_Code__c, UnitPrice__c ';
+  40,130:             pbeSOQL += 'FROM PricebookEntry__c WHERE Active__c = true AND Pricebook2Id__c =: pricebookId AND Product__r.Discount_Product__c = false';
+  83,57:         List<PricebookEntry__c> pbEntList = [SELECT Id, Product__c, Product__r.Name, Product__r.Family__c, Product__r.Description__c,Product__r.Bottle_Qty__c, Product_Code__c, UnitPrice__c 
+  98,66:         List<PricebookEntry__c> pricebookEntryRecs = [SELECT Id, Product__c, Product__r.Name, Product__r.Family__c, Product__r.Description__c,Product__r.Bottle_Qty__c, Product_Code__c, UnitPrice__c 
+  109,49:             oliRec.Product2Id__c = priceBookEnt.Product__c;
+  138,49:         for(PricebookEntry__c pbe : [SELECT Id, Product__c, Product__r.Name, Product__r.Discount__c, Product_Code__c
+  140,119:                                      WHERE Active__c = true AND Pricebook2Id__c =:priceBookId AND Product__r.Discount_Product__c = true AND Product__c =:System.Label.SampleFulfillment_DiscountProduct_Id LIMIT 1]){
+  140,141:                                      WHERE Active__c = true AND Pricebook2Id__c =:priceBookId AND Product__r.Discount_Product__c = true AND Product__c =:System.Label.SampleFulfillment_DiscountProduct_Id LIMIT 1]){
+  163,60:             discountLineItem.Product2Id__c = discountEntry.Product__c;
+
+
+SampleFulfillmentAddProductContTest.cls
+  57,9:         Product__c newProd = new Product__c();
+  57,34:         Product__c newProd = new Product__c();
+  68,9:         Product__c customProd = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: newProd.Id LIMIT 1];
+  68,54:         Product__c customProd = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: newProd.Id LIMIT 1];
+  68,70:         Product__c customProd = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: newProd.Id LIMIT 1];
+  70,66:         insert new PriceBookEntry(Product2Id=customProd.Standard_Product__c, Pricebook2Id=Test.getStandardPricebookId(), UnitPrice=0);
+  74,28:         pricebookEntryItem.Product__c = newProd.Id;
+
+
+SyncRecordsUtility.cls
+  165,63:     public static Boolean syncProductRecord(Product2 sRecord, Product__c cRecord, Map<String, String> targetSourceMap, Boolean isStandardSource, Boolean isInsert){
+  168,34:                 cRecord.Standard_Product__c = sRecord.Id;
+  179,32:                 sRecord.Custom_Product__c = cRecord.Id;
+  207,78:                         List<Product2> standardProdList = [SELECT Id, Custom_Product__c FROM Product2 WHERE Id =: (Id)sRecord.get(sourceField)];
+  208,55:                         if(standardProdList[0].Custom_Product__c != null){
+  209,76:                             cRecord.put(target, standardProdList[0].Custom_Product__c);
+  232,38:                                 List<Product__c> customProdList = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: (Id)cRecord.get(sourceField)];
+  232,88:                                 List<Product__c> customProdList = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: (Id)cRecord.get(sourceField)];
+  232,104:                                 List<Product__c> customProdList = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: (Id)cRecord.get(sourceField)];
+  233,63:                                 if(customProdList[0].Standard_Product__c != null){
+  234,84:                                     sRecord.put(target, customProdList[0].Standard_Product__c);
+  374,78:                         List<Product2> standardProdList = [SELECT Id, Custom_Product__c FROM Product2 WHERE Id =: (Id)sRecord.get(sourceField)];
+  375,55:                         if(standardProdList[0].Custom_Product__c != null){
+  376,76:                             cRecord.put(target, standardProdList[0].Custom_Product__c);
+  398,54:                             }else if(sourceField == 'Product__c'){
+  399,38:                                 List<Product__c> customProdList = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: (Id)cRecord.get(sourceField)];
+  399,88:                                 List<Product__c> customProdList = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: (Id)cRecord.get(sourceField)];
+  399,104:                                 List<Product__c> customProdList = [SELECT Id, Standard_Product__c FROM Product__c WHERE Id =: (Id)cRecord.get(sourceField)];
+  400,63:                                 if(customProdList[0].Standard_Product__c != null){
+  401,84:                                     sRecord.put(target, customProdList[0].Standard_Product__c);
+  408,105:                         if(sourceField != 'Name' && sourceField != 'PriceBook2Id__c' && sourceField != 'Product__c'){
+  451,18:             List<Product__c> customRecordToUpdateBackList = new List<Product__c>();
+  451,70:             List<Product__c> customRecordToUpdateBackList = new List<Product__c>();
+  458,42:                         updRecord.Custom_Product__c = sourceId;
+  461,25:                         Product__c updRecord = new Product__c();
+  461,52:                         Product__c updRecord = new Product__c();
+  463,44:                         updRecord.Standard_Product__c = sourceId;
+  649,22:                 List<Product__c> recordsToDeleteList = new List<Product__c>();
+  649,65:                 List<Product__c> recordsToDeleteList = new List<Product__c>();
+  651,21:                     Product__c deleteCustom = new Product__c();
+  651,51:                     Product__c deleteCustom = new Product__c();
+
+
+--------------------------------------------
+********** APEX TRIGGERS **********
+--------------------------------------------
+
+CustomProductTrigger.trigger
+  1,33: trigger CustomProductTrigger on Product__c (before delete, after delete, after insert, after update) {
+

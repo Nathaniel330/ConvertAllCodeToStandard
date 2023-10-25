@@ -1,0 +1,174 @@
+124 RESULTS IN 17 FILES | SANDBOX: PARTIAL
+--------------------------------------------
+********** APEX CLASSES **********
+--------------------------------------------
+
+CustomAddProductController.cls
+  517,14:         List<Pricebook__c> pricebookRecs = [SELECT Id, Name FROM Pricebook__c WHERE Active__c=true];
+  517,66:         List<Pricebook__c> pricebookRecs = [SELECT Id, Name FROM Pricebook__c WHERE Active__c=true];
+  518,13:         for(Pricebook__c pb: pricebookRecs){
+  566,14:         List<Pricebook__c> pricebookRecs = [SELECT Id, Name FROM Pricebook__c WHERE Active__c=true AND Name =: pricebookName LIMIT 1];
+  566,66:         List<Pricebook__c> pricebookRecs = [SELECT Id, Name FROM Pricebook__c WHERE Active__c=true AND Name =: pricebookName LIMIT 1];
+
+
+CustomAddProductControllerTest.cls
+  23,9:         Pricebook__c price = new Pricebook__c();
+  23,34:         Pricebook__c price = new Pricebook__c();
+  26,27:         price.Is_Standard_Pricebook__c = false;
+  36,9:         Pricebook__c price3 = new Pricebook__c();
+  36,35:         Pricebook__c price3 = new Pricebook__c();
+  39,28:         price3.Is_Standard_Pricebook__c = false;
+  49,9:         Pricebook__c price5 = new Pricebook__c();
+  49,35:         Pricebook__c price5 = new Pricebook__c();
+  52,28:         price5.Is_Standard_Pricebook__c = false;
+  63,9:         Pricebook__c newPb = new Pricebook__c();
+  63,34:         Pricebook__c newPb = new Pricebook__c();
+
+
+CustomConvertLeadController.cls
+  173,67:                    Id priceBookDomesticId = [SElECT Id, Name FROM Pricebook__c WHERE Name = 'Domestic Pricebook 2022' LIMIT 1].Id;
+
+
+CustomConvertLeadControllerTest.cls
+  49,9:         Pricebook__c newPb1 = new Pricebook__c();
+  49,35:         Pricebook__c newPb1 = new Pricebook__c();
+
+
+CustomOpportunityProductTriggerTest.cls
+  16,9:         Pricebook__c newPb1 = new Pricebook__c();
+  16,35:         Pricebook__c newPb1 = new Pricebook__c();
+  21,9:         Pricebook__c newPb2 = new Pricebook__c();
+  21,35:         Pricebook__c newPb2 = new Pricebook__c();
+  26,9:         Pricebook__c newPb3 = new Pricebook__c();
+  26,35:         Pricebook__c newPb3 = new Pricebook__c();
+  62,9:         Pricebook__c newPb = new Pricebook__c();
+  62,34:         Pricebook__c newPb = new Pricebook__c();
+  82,9:         Pricebook__c customPB = [SELECT Id, Standard_Price_Book__c FROM Pricebook__c WHERE Id=: newPb.Id LIMIT 1];
+  82,73:         Pricebook__c customPB = [SELECT Id, Standard_Price_Book__c FROM Pricebook__c WHERE Id=: newPb.Id LIMIT 1];
+  140,9:         Pricebook__c newPb = new Pricebook__c();
+  140,34:         Pricebook__c newPb = new Pricebook__c();
+  156,9:         Pricebook__c customPB = [SELECT Id, Standard_Price_Book__c FROM Pricebook__c WHERE Id=: newPb.Id LIMIT 1];
+  156,73:         Pricebook__c customPB = [SELECT Id, Standard_Price_Book__c FROM Pricebook__c WHERE Id=: newPb.Id LIMIT 1];
+
+
+CustomOpportunityTriggerHandler.cls
+  35,53:         Id pbIDDomestic2022 = [SELECT Id, Name FROM Pricebook__c WHERE Name ='Domestic Pricebook 2022' LIMIT 1].Id;
+  36,57:         Id pbIDDomesticNational = [SELECT Id, Name FROM Pricebook__c WHERE Name ='Domestic National Pricebook' LIMIT 1].Id;
+  37,51:         Id physicianTier1 = [SELECT Id, Name FROM Pricebook__c WHERE Name = 'Physician Tier 1 - Mexico' LIMIT 1].Id;
+
+
+CustomOpportunityTriggerHandlerTest.cls
+  21,9:         Pricebook__c price = new Pricebook__c();
+  21,34:         Pricebook__c price = new Pricebook__c();
+  24,27:         price.Is_Standard_Pricebook__c = false;
+  34,9:         Pricebook__c price3 = new Pricebook__c();
+  34,35:         Pricebook__c price3 = new Pricebook__c();
+  37,28:         price3.Is_Standard_Pricebook__c = false;
+  47,9:         Pricebook__c price5 = new Pricebook__c();
+  47,35:         Pricebook__c price5 = new Pricebook__c();
+  50,28:         price5.Is_Standard_Pricebook__c = false;
+
+
+CustomPricebookEntryTriggerHandlerTest.cls
+  24,9:         Pricebook__c newPb = new Pricebook__c();
+  24,34:         Pricebook__c newPb = new Pricebook__c();
+  50,9:         Pricebook__c newPb = new Pricebook__c();
+  50,34:         Pricebook__c newPb = new Pricebook__c();
+
+
+CustomPricebookTriggerHandler.cls
+  10,34:                             List<Pricebook__c> newList, Map<Id, Pricebook__c> newMap,
+  10,65:                             List<Pricebook__c> newList, Map<Id, Pricebook__c> newMap,
+  11,34:                             List<Pricebook__c> oldList, Map<Id, Pricebook__c> oldMap){
+  11,65:                             List<Pricebook__c> oldList, Map<Id, Pricebook__c> oldMap){
+  23,17:             for(Pricebook__c customRecord : oldList){
+  37,21:                 for(Pricebook__c cRecord : newList){
+
+
+CustomPricebookTriggerHandlerTest.cls
+  19,9:         Pricebook__c newPb = new Pricebook__c();
+  19,34:         Pricebook__c newPb = new Pricebook__c();
+  28,9:         Pricebook__c newPb = new Pricebook__c();
+  28,34:         Pricebook__c newPb = new Pricebook__c();
+  36,9:         Pricebook__c customPricebook = [SELECT Id, Standard_Price_Book__c FROM Pricebook__c WHERE Id =: newPb.Id LIMIT 1];
+  36,80:         Pricebook__c customPricebook = [SELECT Id, Standard_Price_Book__c FROM Pricebook__c WHERE Id =: newPb.Id LIMIT 1];
+  45,9:         Pricebook__c newPb = new Pricebook__c();
+  45,34:         Pricebook__c newPb = new Pricebook__c();
+  53,9:         Pricebook__c customPricebook = [SELECT Id, Standard_Price_Book__c FROM Pricebook__c WHERE Id =: newPb.Id LIMIT 1];
+  53,80:         Pricebook__c customPricebook = [SELECT Id, Standard_Price_Book__c FROM Pricebook__c WHERE Id =: newPb.Id LIMIT 1];
+
+
+EmailFilteredProductsContTest.cls
+  23,9:         Pricebook__c price = new Pricebook__c();
+  23,34:         Pricebook__c price = new Pricebook__c();
+  26,27:         price.Is_Standard_Pricebook__c = false;
+  36,9:         Pricebook__c price3 = new Pricebook__c();
+  36,35:         Pricebook__c price3 = new Pricebook__c();
+  39,28:         price3.Is_Standard_Pricebook__c = false;
+  49,9:         Pricebook__c price5 = new Pricebook__c();
+  49,35:         Pricebook__c price5 = new Pricebook__c();
+  52,28:         price5.Is_Standard_Pricebook__c = false;
+  63,9:         Pricebook__c newPb = new Pricebook__c();
+  63,34:         Pricebook__c newPb = new Pricebook__c();
+
+
+PopulateCustomOppLUBatchTest.cls
+  22,9:         Pricebook__c price = new Pricebook__c();
+  22,34:         Pricebook__c price = new Pricebook__c();
+  25,27:         price.Is_Standard_Pricebook__c = false;
+  35,9:         Pricebook__c price3 = new Pricebook__c();
+  35,35:         Pricebook__c price3 = new Pricebook__c();
+  38,28:         price3.Is_Standard_Pricebook__c = false;
+  48,9:         Pricebook__c price5 = new Pricebook__c();
+  48,35:         Pricebook__c price5 = new Pricebook__c();
+  51,28:         price5.Is_Standard_Pricebook__c = false;
+
+
+PricebookTriggerHandler.cls
+  17,17:         Map<Id, Pricebook__c> sIdToCustomRecordInsertMap = new Map<Id, Pricebook__c>(); 
+  17,72:         Map<Id, Pricebook__c> sIdToCustomRecordInsertMap = new Map<Id, Pricebook__c>(); 
+  18,14:         List<Pricebook__c> customRecordsToUpdateList = new List<Pricebook__c>();
+  18,65:         List<Pricebook__c> customRecordsToUpdateList = new List<Pricebook__c>();
+  46,25:                         Pricebook__c cRecord = new Pricebook__c();
+  46,52:                         Pricebook__c cRecord = new Pricebook__c();
+  51,29:                             Pricebook__c cRecord = new Pricebook__c(Id=sRecord.Custom_Price_Book__c);
+  51,56:                             Pricebook__c cRecord = new Pricebook__c(Id=sRecord.Custom_Price_Book__c);
+
+
+SampleFulfillmentAddProductCont.cls
+  3,19:     public static Pricebook__c getPricebookRecord(Id opportunityId){
+  5,9:         Pricebook__c parentPriceBook = new Pricebook__c();
+  5,44:         Pricebook__c parentPriceBook = new Pricebook__c();
+  12,17:             for(Pricebook__c pb : [SELECT Id,Name FROM Pricebook__c WHERE Id =:priceBookId]){
+  12,56:             for(Pricebook__c pb : [SELECT Id,Name FROM Pricebook__c WHERE Id =:priceBookId]){
+
+
+SampleFulfillmentAddProductContTest.cls
+  22,9:         Pricebook__c price = new Pricebook__c();
+  22,34:         Pricebook__c price = new Pricebook__c();
+  25,27:         price.Is_Standard_Pricebook__c = false;
+  35,9:         Pricebook__c price3 = new Pricebook__c();
+  35,35:         Pricebook__c price3 = new Pricebook__c();
+  38,28:         price3.Is_Standard_Pricebook__c = false;
+  48,9:         Pricebook__c price5 = new Pricebook__c();
+  48,35:         Pricebook__c price5 = new Pricebook__c();
+  51,28:         price5.Is_Standard_Pricebook__c = false;
+  62,9:         Pricebook__c newPb = new Pricebook__c();
+  62,34:         Pricebook__c newPb = new Pricebook__c();
+
+
+SyncRecordsUtility.cls
+  138,67:     public static Boolean syncPricebookRecord(Pricebook2 sRecord, Pricebook__c cRecord, Map<String, String> targetSourceMap, Boolean isStandardSource, Boolean isInsert){
+  318,29:                             Pricebook__c customPricebook = moreDetails.PriceBook2Id__r;
+  323,33:                         // List<Pricebook__c> customPricebookList = [SELECT Id, Standard_Price_Book__c FROM Pricebook__c WHERE Id =: (Id)cRecord.get(sourceField)];
+  323,109:                         // List<Pricebook__c> customPricebookList = [SELECT Id, Standard_Price_Book__c FROM Pricebook__c WHERE Id =: (Id)cRecord.get(sourceField)];
+  394,38:                                 List<Pricebook__c> customPricebookList = [SELECT Id, Standard_Price_Book__c FROM Pricebook__c WHERE Id =: (Id)cRecord.get(sourceField)];
+  394,114:                                 List<Pricebook__c> customPricebookList = [SELECT Id, Standard_Price_Book__c FROM Pricebook__c WHERE Id =: (Id)cRecord.get(sourceField)];
+  422,18:             List<Pricebook__c> customRecordToUpdateBackList = new List<Pricebook__c>();
+  422,72:             List<Pricebook__c> customRecordToUpdateBackList = new List<Pricebook__c>();
+  432,25:                         Pricebook__c updRecord = new Pricebook__c();
+  432,54:                         Pricebook__c updRecord = new Pricebook__c();
+  637,22:                 List<Pricebook__c> recordsToDeleteList = new List<Pricebook__c>();
+  637,67:                 List<Pricebook__c> recordsToDeleteList = new List<Pricebook__c>();
+  639,21:                     Pricebook__c deleteCustom = new Pricebook__c();
+  639,53:                     Pricebook__c deleteCustom = new Pricebook__c();

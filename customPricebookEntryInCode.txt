@@ -1,0 +1,154 @@
+99 RESULTS IN 14 FILES | SANDBOX: PARTIAL
+--------------------------------------------
+********** AURA COMPONENTS **********
+--------------------------------------------
+
+CustomAddProduct.cmp
+  3,56:     <aura:attribute name="pricebookEntryRecords" type="PricebookEntry__c[]"/>
+  9,64:     <aura:attribute name="selectedPricebookEntryRecords" type="PricebookEntry__c[]"/>
+
+CustomAddProductMobile.cmp
+  4,56:     <aura:attribute name="pricebookEntryRecords" type="PricebookEntry__c[]"/>
+
+
+
+--------------------------------------------
+********** APEX CLASSES **********
+--------------------------------------------
+
+CustomAddProductController.cls
+  14,28:             sSoql += 'FROM PricebookEntry__c WHERE Active__c = true AND Pricebook2Id__c =: pricebookId AND Product__r.Discount_Product__c = false ';
+  27,17:             for(PricebookEntry__c pbeEnt: Database.query(sSoql)){
+  51,14:         List<PricebookEntry__c> pricebookEntryList = [SELECT Id, Product__c, Product__r.Name 
+  52,60:                                                       FROM PricebookEntry__c 
+  56,13:         for(PricebookEntry__c pricebookEntry: pricebookEntryList){
+  77,14:         List<PricebookEntry__c> pricebookEntryList = [SELECT Id, Product__c, Product__r.Name FROM PricebookEntry__c 
+  77,99:         List<PricebookEntry__c> pricebookEntryList = [SELECT Id, Product__c, Product__r.Name FROM PricebookEntry__c 
+  80,13:         for(PricebookEntry__c pricebookEntry: pricebookEntryList){
+  124,153:             String query = 'SELECT Id, Product__c, Product__r.Name, Product__r.Family__c, Product__r.Description__c, Product_Code__c, UnitPrice__c FROM PricebookEntry__c WHERE Active__c = true AND Pricebook2Id__c = \'' + pricebookId + '\' AND Product__r.Discount_Product__c = false AND (Product__r.Name LIKE \'%' + productName + '%\' OR Product_Code__c LIKE \'%' + productName + '%\')';
+  125,18:             List<PricebookEntry__c> pbEntList = Database.query(query);
+  127,17:             for(PricebookEntry__c pbeEnt: pbEntList){
+  146,14:         List<PricebookEntry__c> pbEntList = [SELECT Id, Product__c, Product__r.Name, Product__r.Family__c, Product__r.Description__c,Product__r.Bottle_Qty__c, Product_Code__c, UnitPrice__c 
+  147,51:                                              FROM PricebookEntry__c 
+  150,13:         for(PricebookEntry__c pbeEnt: pbEntList){
+  163,14:         List<PricebookEntry__c> pricebookEntryRecs = [SELECT Id, Product__c, Product__r.Name, Product__r.Family__c, Product__r.Description__c,Product__r.Bottle_Qty__c, Product_Code__c, UnitPrice__c 
+  164,60:                                                       FROM PricebookEntry__c WHERE Active__c = true AND Id IN: pricebookEntryIds];
+  189,13:         for(PricebookEntry__c priceBookEnt: pricebookEntryRecs){
+  225,17:         Map<Id, PricebookEntry__c> mapIdToPBE = new Map<Id, PricebookEntry__c>();
+  225,61:         Map<Id, PricebookEntry__c> mapIdToPBE = new Map<Id, PricebookEntry__c>();
+  234,17:             for(PricebookEntry__c pbe: [SELECT Id, UnitPrice__c, Product__c, Product_Code__c, Product__r.Discount__c, Product__r.Name,Product__r.Bottle_Qty__c FROM PricebookEntry__c WHERE Id IN: pbeIds]){
+  234,165:             for(PricebookEntry__c pbe: [SELECT Id, UnitPrice__c, Product__c, Product_Code__c, Product__r.Discount__c, Product__r.Name,Product__r.Bottle_Qty__c FROM PricebookEntry__c WHERE Id IN: pbeIds]){
+  276,17:                 PricebookEntry__c pbeRec = mapIdToPBE.get(oliRec.selectedDiscount);
+  316,18:             List<PricebookEntry__c> pricebookEntryForShipping = new List<PricebookEntry__c>();
+  316,74:             List<PricebookEntry__c> pricebookEntryForShipping = new List<PricebookEntry__c>();
+  318,159:                 // pricebookEntryForShipping = [SELECT Id, Product__c, Product__r.Name, Product__r.Discount__c, Product_Code__c,Product__r.Bottle_Qty__c FROM PricebookEntry__c 
+  320,156:                 pricebookEntryForShipping = [SELECT Id, Product__c, Product__r.Name, Product__r.Discount__c, Product_Code__c,Product__r.Bottle_Qty__c FROM PricebookEntry__c 
+  325,17:                 PricebookEntry__c pbeRec = pricebookEntryForShipping.get(0);
+  357,20:                 // PricebookEntry__c bottleDiscountPBE = [SELECT Id,Product__c,Product__r.Name,Product__r.Discount__c,Product_Code__c,Product__r.Bottle_Qty__c
+  358,64:                 //                                        FROM PricebookEntry__c 
+  360,17:                 PricebookEntry__c bottleDiscountPBE = [SELECT Id,Product__c,Product__r.Name,Product__r.Discount__c,Product_Code__c,Product__r.Bottle_Qty__c
+  361,61:                                                        FROM PricebookEntry__c 
+  438,24:     public static List<PricebookEntry__c> getPriceBookEntryRecordsMobile(Id opportunityId, String productName, List<Id> productIds){
+  446,150:             String query = 'SELECT Id, Product__c, Product__r.Name,Product__r.Family__c,Product__r.Description__c,Product_Code__c, UnitPrice__c FROM PricebookEntry__c WHERE Active__c = true AND Pricebook2Id__c = \'' + pricebookId + '\' AND (Product__r.Name LIKE \'%' + productName + '%\' OR Product_Code__c LIKE \'%' + productName + '%\')';
+  458,14:         List<PricebookEntry__c> priceBookList = new List<PricebookEntry__c>();
+  458,58:         List<PricebookEntry__c> priceBookList = new List<PricebookEntry__c>();
+  466,14:         List<PricebookEntry__c> pricebookEntryRecs = [SELECT Id, Product__c, Product__r.Name, Product__r.Family__c, Product__r.Description__c, Product_Code__c, UnitPrice__c 
+  467,60:                                                       FROM PricebookEntry__c WHERE Active__c = true AND Id IN: pricebookEntryIds];
+  470,13:         for(PricebookEntry__c priceBookEnt: pricebookEntryRecs){
+  548,24:     public static List<PricebookEntry__c> getPriceBookEntryRecordsMobileSelected(List<Id> pricebookEntryIds){
+  551,149:         String query = 'SELECT Id, Product__c, Product__r.Name, Product__r.Family__c, Product__r.Description__c, Product_Code__c, UnitPrice__c FROM PricebookEntry__c WHERE Active__c = true';
+  626,29:         @AuraEnabled public PricebookEntry__c priceBookEnt {get; set;}
+
+CustomAddProductControllerTest.cls
+  73,9:         PricebookEntry__c pricebookEntryItem = new PricebookEntry__c();
+  73,52:         PricebookEntry__c pricebookEntryItem = new PricebookEntry__c();
+  99,36:         Id pbeId = [SELECT Id FROM PricebookEntry__c LIMIT 1].Id;
+  118,36:         Id pbeId = [SELECT Id FROM PricebookEntry__c LIMIT 1].Id;
+  131,36:         Id pbeId = [SELECT Id FROM PricebookEntry__c LIMIT 1].Id;
+
+
+CustomOpportunityProductTriggerTest.cls
+  93,9:         PricebookEntry__c pricebookEntryItem = new PricebookEntry__c();
+  93,52:         PricebookEntry__c pricebookEntryItem = new PricebookEntry__c();
+  167,9:         PricebookEntry__c pricebookEntryItem = new PricebookEntry__c();
+  167,52:         PricebookEntry__c pricebookEntryItem = new PricebookEntry__c();
+
+
+CustomPricebookEntryTriggerHandler.cls
+  10,34:                             List<PricebookEntry__c> newList, Map<Id, PricebookEntry__c> newMap,
+  10,70:                             List<PricebookEntry__c> newList, Map<Id, PricebookEntry__c> newMap,
+  11,34:                             List<PricebookEntry__c> oldList, Map<Id, PricebookEntry__c> oldMap){
+  11,70:                             List<PricebookEntry__c> oldList, Map<Id, PricebookEntry__c> oldMap){
+  20,79:         if(isAfter && isDelete){Set<Id> standardRecordIds = new Set<Id>();for(PricebookEntry__c customRecord : oldList){if(customRecord.Standard_Pricebook_Entry__c != null){standardRecordIds.add((Id)customRecord.Standard_Pricebook_Entry__c);}}if(!standardRecordIds.isEmpty()){SyncRecordsUtility.deleteRecords(standardRecordIds, true, 5);}}
+  25,21:                 for(PricebookEntry__c cRecord : newList){
+
+
+CustomPricebookEntryTriggerHandlerTest.cls
+  34,9:         PricebookEntry__c pricebookEntryItem = new PricebookEntry__c();
+  34,52:         PricebookEntry__c pricebookEntryItem = new PricebookEntry__c();
+  61,9:         PricebookEntry__c pricebookEntryItem = new PricebookEntry__c();
+  61,52:         PricebookEntry__c pricebookEntryItem = new PricebookEntry__c();
+  71,9:         PricebookEntry__c customPricebookEntry = [SELECT Id, Standard_Pricebook_Entry__c FROM PricebookEntry__c WHERE Id =: pricebookEntryItem.Id LIMIT 1];
+  71,95:         PricebookEntry__c customPricebookEntry = [SELECT Id, Standard_Pricebook_Entry__c FROM PricebookEntry__c WHERE Id =: pricebookEntryItem.Id LIMIT 1];
+
+
+EmailFilteredProductsContTest.cls
+  73,9:         PricebookEntry__c pricebookEntryItem = new PricebookEntry__c();
+  73,52:         PricebookEntry__c pricebookEntryItem = new PricebookEntry__c();
+
+
+MergeDuplicateProductsBatch.cls
+  210,40:                 delete [SELECT Id FROM PricebookEntry__c WHERE Product__c IN: customProductIds];
+
+
+PhysicianManualOrderHandler.cls
+  196,9:         PricebookEntry__c pbEntry = [SELECT Id, Product__c, Product_Code__c FROM PricebookEntry__c WHERE Active__c = true AND Pricebook2Id__c =: pricebookId 
+  196,82:         PricebookEntry__c pbEntry = [SELECT Id, Product__c, Product_Code__c FROM PricebookEntry__c WHERE Active__c = true AND Pricebook2Id__c =: pricebookId 
+  221,9:         PricebookEntry__c pbEntryShippingFee = [SELECT Id, Product__c, Product_Code__c FROM PricebookEntry__c WHERE Active__c = true AND Pricebook2Id__c =: pricebookId 
+  221,93:         PricebookEntry__c pbEntryShippingFee = [SELECT Id, Product__c, Product_Code__c FROM PricebookEntry__c WHERE Active__c = true AND Pricebook2Id__c =: pricebookId 
+  224,9:         PricebookEntry__c pbEntryFreeShippingFee = [SELECT Id, Product__c, Product_Code__c FROM PricebookEntry__c WHERE Active__c = true AND Pricebook2Id__c =: pricebookId 
+  224,97:         PricebookEntry__c pbEntryFreeShippingFee = [SELECT Id, Product__c, Product_Code__c FROM PricebookEntry__c WHERE Active__c = true AND Pricebook2Id__c =: pricebookId 
+
+
+
+SampleFulfillmentAddProductCont.cls
+  40,30:             pbeSOQL += 'FROM PricebookEntry__c WHERE Active__c = true AND Pricebook2Id__c =: pricebookId AND Product__r.Discount_Product__c = false';
+  56,17:             for(PricebookEntry__c pbeEnt: Database.query(pbeSOQL)){
+  83,14:         List<PricebookEntry__c> pbEntList = [SELECT Id, Product__c, Product__r.Name, Product__r.Family__c, Product__r.Description__c,Product__r.Bottle_Qty__c, Product_Code__c, UnitPrice__c 
+  84,51:                                              FROM PricebookEntry__c 
+  86,13:         for(PricebookEntry__c pbeEnt: pbEntList){
+  98,14:         List<PricebookEntry__c> pricebookEntryRecs = [SELECT Id, Product__c, Product__r.Name, Product__r.Family__c, Product__r.Description__c,Product__r.Bottle_Qty__c, Product_Code__c, UnitPrice__c 
+  99,60:                                                       FROM PricebookEntry__c WHERE Active__c = true AND Id IN: pricebookEntryIds];
+  103,13:         for(PricebookEntry__c priceBookEnt: pricebookEntryRecs){
+  130,9:         PricebookEntry__c discountEntry = new PricebookEntry__c();
+  130,47:         PricebookEntry__c discountEntry = new PricebookEntry__c();
+  138,13:         for(PricebookEntry__c pbe : [SELECT Id, Product__c, Product__r.Name, Product__r.Discount__c, Product_Code__c
+  139,43:                                      FROM PricebookEntry__c 
+  187,16:         public PricebookEntry__c priceBookEnt {get; set;}
+
+
+SampleFulfillmentAddProductContTest.cls
+  72,9:         PricebookEntry__c pricebookEntryItem = new PricebookEntry__c();
+  72,52:         PricebookEntry__c pricebookEntryItem = new PricebookEntry__c();
+
+
+SyncRecordsUtility.cls
+  359,76:     public static Boolean syncPricebookEntryRecord(PricebookEntry sRecord, PricebookEntry__c cRecord, Map<String, String> targetSourceMap, Boolean isStandardSource, Boolean isInsert){
+  538,18:             List<PricebookEntry__c> customRecordToUpdateBackList = new List<PricebookEntry__c>();
+  538,77:             List<PricebookEntry__c> customRecordToUpdateBackList = new List<PricebookEntry__c>();
+  548,25:                         PricebookEntry__c updRecord = new PricebookEntry__c();
+  548,59:                         PricebookEntry__c updRecord = new PricebookEntry__c();
+  685,22:                 List<PricebookEntry__c> recordsToDeleteList = new List<PricebookEntry__c>();
+  685,72:                 List<PricebookEntry__c> recordsToDeleteList = new List<PricebookEntry__c>();
+  687,21:                     PricebookEntry__c deleteCustom = new PricebookEntry__c();
+  687,58:                     PricebookEntry__c deleteCustom = new PricebookEntry__c();
+
+
+
+
+--------------------------------------------
+********** APEX CLASSES **********
+--------------------------------------------
+
+CustomPricebookEntryTrigger.trigger
+  1,40: trigger CustomPricebookEntryTrigger on PricebookEntry__c (before delete, after delete, after insert, after update) {
